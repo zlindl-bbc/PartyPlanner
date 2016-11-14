@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PartyPlannerJPA">
+		<class>ch.bbc.partyplanner.model.User</class>
+		<class>ch.bbc.partyplanner.model.Bring</class>
+		<class>ch.bbc.partyplanner.model.Event</class>
+		<class>ch.bbc.partyplanner.model.Product</class>
+	</persistence-unit>
+</persistence>
