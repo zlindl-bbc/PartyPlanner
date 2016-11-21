@@ -22,20 +22,23 @@ public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int eventId;
+	private int idEvent;
 	private Date eventDate;
-	private String product;
+	private String eventName;
+	private String eventDescription;
+	private int productId;
+	private int userId;
 
 	public Event() {
 
 	}
 
-	public int getEventId() {
-		return eventId;
+	public int getIdEvent() {
+		return idEvent;
 	}
 
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
+	public void setIdEvent(int idEvent) {
+		this.idEvent = idEvent;
 	}
 
 	public Date getEventDate() {
@@ -46,12 +49,38 @@ public class Event implements Serializable {
 		this.eventDate = eventDate;
 	}
 
-	public String getProduct() {
-		return product;
+	public String getEventName() {
+		return eventName;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
+
+	public String getEventDescription() {
+		return eventDescription;
+	}
+
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	
 
 }

@@ -25,10 +25,11 @@ public class Bring implements Serializable {
 
 	@Id
 	private int idTableOne;
-	private int idEvent;
-	private int idProduct;
-	private int idUser;
+	private int numberOfItems;
 	private String tempUsername;
+	private int eventId;
+	private int userId;
+	private int productId;
 
 	
 	
@@ -50,38 +51,14 @@ public class Bring implements Serializable {
 
 
 
-	public int getIdEvent() {
-		return idEvent;
+	public int getNumberOfItems() {
+		return numberOfItems;
 	}
 
 
 
-	public void setIdEvent(int idEvent) {
-		this.idEvent = idEvent;
-	}
-
-
-
-	public int getIdProduct() {
-		return idProduct;
-	}
-
-
-
-	public void setIdProduct(int idProduct) {
-		this.idProduct = idProduct;
-	}
-
-
-
-	public int getIdUser() {
-		return idUser;
-	}
-
-
-
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setNumberOfItems(int numberOfItems) {
+		this.numberOfItems = numberOfItems;
 	}
 
 
@@ -94,6 +71,42 @@ public class Bring implements Serializable {
 
 	public void setTempUsername(String tempUsername) {
 		this.tempUsername = tempUsername;
+	}
+
+
+
+	public int getEventId() {
+		return eventId;
+	}
+
+
+
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
+
+
+
+	public int getUserId() {
+		return userId;
+	}
+
+
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
+
+	public int getProductId() {
+		return productId;
+	}
+
+
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
 	

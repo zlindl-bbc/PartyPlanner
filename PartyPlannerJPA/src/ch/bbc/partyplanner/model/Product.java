@@ -24,55 +24,78 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int userID;
-	private String username;
-	private String email;
-	private String password;
+	private int idProduct;
+	private String productName;
+	private String description;
+	private int numberOfItems;
+	private int eventId;
 
 	
 	
 	public Product() {
 		
 	}
+
+
+
+	public int getIdProduct() {
+		return idProduct;
+	}
+
+
+
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
+	}
+
+
+
+	public String getProductName() {
+		return productName;
+	}
+
+
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public int getNumberOfItems() {
+		return numberOfItems;
+	}
+
+
+
+	public void setNumberOfItems(int numberOfItems) {
+		this.numberOfItems = numberOfItems;
+	}
+
+
+
+	public int getEventId() {
+		return eventId;
+	}
+
+
+
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
 	
 	
-	public int getUserID() {
-		return userID;
-	}
-
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 }

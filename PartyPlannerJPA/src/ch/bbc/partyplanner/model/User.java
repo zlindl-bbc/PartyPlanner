@@ -24,7 +24,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int userID;
+	private int idUser;
 	private String username;
 	private String email;
 	private String password;
@@ -37,12 +37,12 @@ public class User implements Serializable {
 	
 	
 	public int getUserID() {
-		return userID;
+		return idUser;
 	}
 
 
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUserID(int idUser) {
+		this.idUser = idUser;
 	}
 
 
