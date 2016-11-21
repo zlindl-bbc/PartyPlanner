@@ -1,0 +1,28 @@
+body {
+    font-family: "Verdana", "Verdana", monospace;
+    background-color:#000040;
+    text-align: center;
+}
+
+.standardButton {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #0000a0;
+	width: 150px;
+}
+.standardButton: hover,
+.standardButton: focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+
+.button {
+	padding-top: 5px;
+}
