@@ -15,7 +15,7 @@ body {
 	text-align: right;
 }
 
-.registerButtons {
+.Buttons {
 	background-color: #59B2E0;
 	outline: none;
 	color: #fff;
@@ -28,12 +28,12 @@ body {
 	width: 150px;
 }
 
-.registerButton {
+.Button {
 	padding-top: 5px;
 }
 
-.registerButtons: hover,
-.registerButtons: focus {
+.Buttons: hover,
+.Buttons: focus {
 	color: #fff;
 	background-color: #53A3CD;
 	border-color: #53A3CD;
