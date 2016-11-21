@@ -2,7 +2,6 @@ package ch.bbc.partyplanner.model;
 
 import java.io.Serializable;
 
-import javax.enterprise.inject.Model;
 import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +16,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = "Event.findAll", query = "SELECT c FROM Event c"), 
+	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
 	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
 })
 public class Event implements Serializable {

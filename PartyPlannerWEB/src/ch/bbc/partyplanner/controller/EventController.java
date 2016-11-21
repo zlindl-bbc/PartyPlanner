@@ -1,6 +1,7 @@
 package ch.bbc.partyplanner.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -19,6 +20,8 @@ public class EventController implements Serializable {
     @EJB
     EventBeanLocal eventBean;
     
+    List<Event> allEvents;
+    
 	public Event getEvent() {
 		return event;
 	}
@@ -32,6 +35,21 @@ public class EventController implements Serializable {
 	
 	public String create() {
 		eventBean.create(event);
-		return "/login";
+		return "/index";
+	}
+	
+	public List<Event> getAllEvents() {
+		if(allEvents == null) {
+			setAllUsers(eventBean.getAllEvents());
+		}
+		return allEvents;
+	}
+
+	public void setAllUsers(List<Event> allEvents) {
+		this.allEvents = allEvents;
+	}
+	
+	public void deleteById() {
+		eventBean.deleteById (event);
 	}
 }

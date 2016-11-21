@@ -1,5 +1,6 @@
 package ch.bbc.partyplanner.ejb.event;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -7,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ch.bbc.partyplanner.model.Event;
-import ch.bbc.partyplanner.model.User;
 
 /**
  * Session Bean implementation class RegisterBean
@@ -27,4 +27,15 @@ public class EventBean implements EventBeanLocal {
 	public void create(Event event) {
 		em.persist(event);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Event> getAllEvents() {
+        return (List<Event>) em.createNamedQuery("Event.findAll").getResultList();
+  }
+
+	public void deleteById(Event event) {
+		em.createNamedQuery("Event.deleteById");
+	}
+	
+	
 }
