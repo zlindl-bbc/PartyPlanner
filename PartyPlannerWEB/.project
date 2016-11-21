@@ -3,6 +3,7 @@
 	<name>PartyPlannerWEB</name>
 	<comment></comment>
 	<projects>
+		<project>PartyPlannerEJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

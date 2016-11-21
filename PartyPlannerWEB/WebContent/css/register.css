@@ -1,8 +1,4 @@
-body {
-	padding-top: 90px;
-	text-align: center;
-    background-color: #ccffff;
-}
+@import url(style.css);
 
 .Container {
 	width: 300px;
@@ -15,26 +11,4 @@ body {
 	text-align: right;
 }
 
-.Buttons {
-	background-color: #59B2E0;
-	outline: none;
-	color: #fff;
-	font-size: 14px;
-	height: auto;
-	font-weight: normal;
-	padding: 14px 0;
-	text-transform: uppercase;
-	border-color: #59B2E6;
-	width: 150px;
-}
 
-.Button {
-	padding-top: 5px;
-}
-
-.Buttons: hover,
-.Buttons: focus {
-	color: #fff;
-	background-color: #53A3CD;
-	border-color: #53A3CD;
-}

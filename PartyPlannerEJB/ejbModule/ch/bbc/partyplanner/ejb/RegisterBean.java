@@ -40,6 +40,7 @@ public class RegisterBean implements RegisterBeanLocal {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUser() {
         
         return (List<User>) em.createNamedQuery("Customer.findAll").getResultList();
