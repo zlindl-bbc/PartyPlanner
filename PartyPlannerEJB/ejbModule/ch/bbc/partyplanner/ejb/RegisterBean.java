@@ -17,13 +17,31 @@ public class RegisterBean implements RegisterBeanLocal {
 	@PersistenceContext
 	EntityManager em;
 
+	/**
+	 * Default constructor.
+	 */
 	public RegisterBean() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	@Override
-	public List<User> getAllUser() {
-		return (List<User>) em.createNamedQuery("User.findAll").getResultList();
+	public void save(User user) {
+		em.persist(user);
 	}
+
+	public String checkLogin(User user) {
+
+		if (em.createNamedQuery("Customer.checkLogin").setParameter("custMail", user.getEmail())
+				.setParameter("custPW", user.getPassword()).getResultList().size() > 0) {
+			return "/home";
+		} else {
+
+			return "";
+		}
+	}
+	
+	public List<User> getAllUser() {
+        
+        return (List<User>) em.createNamedQuery("Customer.findAll").getResultList();
+  }
 }

@@ -11,8 +11,12 @@ public interface RegisterBeanLocal {
 	
 	/**
 	 * 
-	 * @return
+	 * @param user
 	 */
+	public void save(User user);
+	
+	public abstract String checkLogin(User user); 
+	
 	public abstract List<User> getAllUser();
 
 }

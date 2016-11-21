@@ -1,0 +1,39 @@
+body {
+	padding-top: 90px;
+	text-align: center;
+    background-color: #ccffff;
+}
+
+.Container {
+	width: 300px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.inputField {
+	padding-top: 5px; 
+	text-align: right;
+}
+
+.registerButtons {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+
+.registerButton {
+	padding-top: 5px;
+}
+
+.registerButtons: hover,
+.registerButtons: focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
