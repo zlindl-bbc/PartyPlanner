@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.login", query="SELECT u FROM User u WHERE u.email = :userMail AND u.password = :userPassword"),
 	@NamedQuery(name="User.createUser", query="UPDATE User u SET u.idUser = :userId, u.username = :userUsername, u.email = :userEmail, u.password = :userPassword"),
 })
 public class User implements Serializable {

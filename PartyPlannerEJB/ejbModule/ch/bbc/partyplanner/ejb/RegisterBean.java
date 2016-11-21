@@ -28,10 +28,23 @@ public class RegisterBean implements RegisterBeanLocal {
 	public void save(User user) {
 		em.persist(user);
 	}
+	
+	public String login(User user) {
 
-	public String checkLogin(User user) {
+		if (em.createNamedQuery("User.login")
+				.setParameter("userMail", user.getEmail())
+				.setParameter("userPassword", user.getPassword())
+				.getResultList().size() > 0) {
+			LOGGER.info("User " + user.getEmail() + " successfully logged in.");
+			return "/index";
+		} else {
+			return "";
+		}
+	}
 
-		if (em.createNamedQuery("Customer.checkLogin").setParameter("custMail", user.getEmail())
+	public String checkUser(User user) {
+
+		if (em.createNamedQuery("User.checkUser").setParameter("custMail", user.getEmail())
 				.setParameter("custPW", user.getPassword()).getResultList().size() > 0) {
 			return "/home";
 		} else {

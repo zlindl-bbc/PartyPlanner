@@ -15,7 +15,7 @@ public interface RegisterBeanLocal {
 	 */
 	public void save(User user);
 	
-	public abstract String checkLogin(User user); 
+	public abstract String login(User user); 
 	
 	public abstract List<User> getAllUser();
 

@@ -46,8 +46,8 @@ public class UserController implements Serializable {
 		return "";
 	}
 	
-	public String checkLogin() {
-		return registerBean.checkLogin(user);
+	public String login() {
+		return registerBean.login(user);
 	}
 	
 	public User getUser() {
