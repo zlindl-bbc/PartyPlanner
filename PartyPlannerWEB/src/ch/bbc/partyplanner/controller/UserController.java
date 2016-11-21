@@ -30,6 +30,15 @@ public class UserController implements Serializable {
 //		setAllUsers(registerEjb.getAllUser());
 //		System.out.println(getAllUsers());
 //	}
+	
+	public void create(){
+		try{
+			registerBean.create(user);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
  
 	public String save() {
 		try {

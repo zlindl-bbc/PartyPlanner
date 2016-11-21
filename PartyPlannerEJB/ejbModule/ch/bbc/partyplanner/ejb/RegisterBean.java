@@ -44,4 +44,10 @@ public class RegisterBean implements RegisterBeanLocal {
         
         return (List<User>) em.createNamedQuery("Customer.findAll").getResultList();
   }
+
+	@Override
+	public void create(User user) {
+		em.persist(user);
+		
+	}
 }

@@ -3,7 +3,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<link rel="stylesheet" title="Standardstylesheet" href="register.css"
+	<link rel="stylesheet" title="Standardstylesheet" href="css/register.css"
 		type="text/css" />
 </h:head>
 <h:body>
@@ -31,7 +31,7 @@
 				<h:message for="password" style="color: red;" />
 			</div>
 			<div class="Button">
-				<h:commandButton action="#{userController.save()}"
+				<h:commandButton action="#{userController.create()}"
 					value="Registrieren" type="submit" class="Buttons" />
 			</div>
 

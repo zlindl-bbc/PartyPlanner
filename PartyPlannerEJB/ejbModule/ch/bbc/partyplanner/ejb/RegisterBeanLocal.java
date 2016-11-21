@@ -19,4 +19,6 @@ public interface RegisterBeanLocal {
 	
 	public abstract List<User> getAllUser();
 
+	public abstract void create(User user);
+
 }

@@ -18,7 +18,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @Model
 @NamedQueries({
-	@NamedQuery(name="User.findAll", query="SELECT c FROM User c"),
+	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.createUser", query="UPDATE User u SET u.idUser = :idUser, u.username = :username, u.email = :email, u.password = :password"),
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -36,12 +37,12 @@ public class User implements Serializable {
 	}
 	
 	
-	public int getUserID() {
+	public int getidUser() {
 		return idUser;
 	}
 
 
-	public void setUserID(int idUser) {
+	public void setidUser(int idUser) {
 		this.idUser = idUser;
 	}
 
