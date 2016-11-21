@@ -1,4 +1,4 @@
-package ch.bbc.partyplanner.ejb;
+package ch.bbc.partyplanner.ejb.user;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -13,20 +13,15 @@ import ch.bbc.partyplanner.model.User;
  * Session Bean implementation class RegisterBean
  */
 @Stateless
-public class RegisterBean implements RegisterBeanLocal {
+public class UserBean implements UserBeanLocal {
 
-	private final static Logger LOGGER = Logger.getLogger(RegisterBean.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(UserBean.class.getName());
 
 	@PersistenceContext
 	EntityManager em;
 
-	public RegisterBean() {
+	public UserBean() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void save(User user) {
-		em.persist(user);
 	}
 	
 	public String login(User user) {

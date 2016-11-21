@@ -1,7 +1,6 @@
 package ch.bbc.partyplanner.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Named;
@@ -16,14 +15,16 @@ import javax.persistence.NamedQuery;
  */
 @Named
 @Entity
-@Model
-@NamedQueries({ @NamedQuery(name = "Event.findAll", query = "SELECT c FROM Event c"), })
+@NamedQueries({ 
+	@NamedQuery(name = "Event.findAll", query = "SELECT c FROM Event c"), 
+	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
+})
 public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int idEvent;
-	private Date eventDate;
+	private String eventDate;
 	private String eventName;
 	private String eventDescription;
 	private int productId;
@@ -41,11 +42,11 @@ public class Event implements Serializable {
 		this.idEvent = idEvent;
 	}
 
-	public Date getEventDate() {
+	public String getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(Date eventDate) {
+	public void setEventDate(String eventDate) {
 		this.eventDate = eventDate;
 	}
 

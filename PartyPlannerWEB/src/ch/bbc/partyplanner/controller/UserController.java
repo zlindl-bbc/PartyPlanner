@@ -8,7 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import ch.bbc.partyplanner.ejb.RegisterBeanLocal;
+import ch.bbc.partyplanner.ejb.user.UserBeanLocal;
 import ch.bbc.partyplanner.model.User;
 
 @Named
@@ -18,7 +18,7 @@ public class UserController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @EJB
-    RegisterBeanLocal registerBean;
+    UserBeanLocal userBean;
     
 	@Inject
 	User user;
@@ -32,22 +32,12 @@ public class UserController implements Serializable {
 //	}
 	
 	public String create() {
-		registerBean.create(user);
+		userBean.create(user);
 		return "/login";
-	}
- 
-	public String save() {
-		try {
-			registerBean.save(user);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
 	}
 	
 	public String login() {
-		return registerBean.login(user);
+		return userBean.login(user);
 	}
 	
 	public User getUser() {
@@ -60,7 +50,7 @@ public class UserController implements Serializable {
 
 	public List<User> getAllUsers() {
 		if(allUsers == null) {
-			setAllUsers(registerBean.getAllUser());
+			setAllUsers(userBean.getAllUser());
 		}
 		return allUsers;
 	}

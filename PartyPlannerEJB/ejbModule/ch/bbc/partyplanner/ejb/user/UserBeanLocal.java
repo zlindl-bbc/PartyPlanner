@@ -1,4 +1,4 @@
-package ch.bbc.partyplanner.ejb;
+package ch.bbc.partyplanner.ejb.user;
 
 import java.util.List;
 
@@ -7,13 +7,7 @@ import javax.ejb.Local;
 import ch.bbc.partyplanner.model.User;
 
 @Local
-public interface RegisterBeanLocal {
-	
-	/**
-	 * 
-	 * @param user
-	 */
-	public void save(User user);
+public interface UserBeanLocal {
 	
 	public abstract String login(User user); 
 	
