@@ -1,6 +1,7 @@
 package ch.bbc.partyplanner.ejb;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,12 +15,11 @@ import ch.bbc.partyplanner.model.User;
 @Stateless
 public class RegisterBean implements RegisterBeanLocal {
 
+	private final static Logger LOGGER = Logger.getLogger(RegisterBean.class.getName());
+
 	@PersistenceContext
 	EntityManager em;
 
-	/**
-	 * Default constructor.
-	 */
 	public RegisterBean() {
 		// TODO Auto-generated constructor stub
 	}
@@ -46,9 +46,7 @@ public class RegisterBean implements RegisterBeanLocal {
         return (List<User>) em.createNamedQuery("Customer.findAll").getResultList();
   }
 
-	@Override
 	public void create(User user) {
 		em.persist(user);
-		
 	}
 }

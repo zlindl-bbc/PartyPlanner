@@ -31,13 +31,9 @@ public class UserController implements Serializable {
 //		System.out.println(getAllUsers());
 //	}
 	
-	public void create(){
-		try{
-			registerBean.create(user);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String create() {
+		registerBean.create(user);
+		return "/login";
 	}
  
 	public String save() {

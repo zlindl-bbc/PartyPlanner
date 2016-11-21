@@ -2,7 +2,6 @@ package ch.bbc.partyplanner.model;
 
 import java.io.Serializable;
 
-import javax.enterprise.inject.Model;
 import javax.inject.Named;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,10 +15,9 @@ import javax.persistence.NamedQuery;
  */
 @Named
 @Entity
-@Model
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
-	@NamedQuery(name="User.createUser", query="UPDATE User u SET u.idUser = :idUser, u.username = :username, u.email = :email, u.password = :password"),
+	@NamedQuery(name="User.createUser", query="UPDATE User u SET u.idUser = :userId, u.username = :userUsername, u.email = :userEmail, u.password = :userPassword"),
 })
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
