@@ -4,36 +4,75 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<link rel="stylesheet" title="specificStyle" href="css/register.css"
+	<link rel="stylesheet" title="specificStyle" href="css/login.css"
 		type="text/css" />
+
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.active-links').click(function() {
+				if ($('#signin-dropdown').is(":visible")) {
+					$('#signin-dropdown').hide()
+					$('#session').removeClass('active');
+				} else {
+					$('#signin-dropdown').show()
+					$('#session').addClass('active');
+				}
+				return false;
+			});
+			$('#signin-dropdown').click(function(e) {
+				e.stopPropagation();
+			});
+			$(document).click(function() {
+				$('#signin-dropdown').hide();
+				$('#session').removeClass('active');
+			});
+		});
+	</script>
+
 </h:head>
 <h:body>
-	<div class="container">
-		<div class="centre-container">
-			<h:form>
-				<div class="inputfield">
-					<h:outputLabel for="email" value="E-Mail: " />
-					<h:inputText id="email" value="#{userController.user.email}"
-						required="true" requiredMessage="Bitte E-Mail eingeben">
-					</h:inputText>
-				</div>
-				<div class="inputfield">
-					<h:message for="password" style="color: red;" />
-					<h:outputLabel for="password" value="Passwort: " />
-					<h:inputSecret id="password"
-						value="#{userController.user.password}" required="true"
-						requiredMessage="Bitte Passwort eingeben">
-					</h:inputSecret>
-				</div>
-				<div class="button">
-					<h:message for="password" style="color: red;" />
-					<h:commandButton action="#{userController.login()}"
-						value="Login" class="standardButton" />
-				</div>
+	<div id="top-stuff">
+		<div id="top-bar-out">
+			<div id="container">
+				<div id="topnav">
+					<div class="active-links">
+						<div class="" id="session">
+							<a id="signin-link" href="#"> <em>Have an account?</em> <strong>Sign
+									in</strong>
+							</a>
+						</div>
+						<div style="display: none;" id="signin-dropdown">
+							<h:form class="signin">
+								<fieldset class="textbox">
+									<label class="username"><span>email</span>
+									<h:inputText id="email" name="email" autocomplete="on" value="#{userController.user.email}" required="true"
+										requiredMessage="please enter email"></h:inputText>
+									</label>
+										
+									<label class="username"><span>password</span>
+									<h:inputText id="password" name="password" autocomplete="on" value="#{userController.user.password}" required="true"
+										requiredMessage="please enter password"></h:inputText>
+									</label>
+								</fieldset>
 
-			</h:form>
+								<fieldset class="remb">
+									<label class="remember"> <input value="1"
+										name="remember_me" type="checkbox"/><span>Remember
+											me</span>
+									</label>
+									<h:commandButton action="#{userController.login()}" value="Login"
+										class="standardButton" />
+								</fieldset>
+								<p>
+									<a class="forgot" href="#">Forgot your password</a>
+								</p>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
 </h:body>
 </h:html>
