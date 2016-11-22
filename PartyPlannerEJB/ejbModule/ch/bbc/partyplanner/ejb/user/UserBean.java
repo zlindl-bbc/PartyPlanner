@@ -36,22 +36,11 @@ public class UserBean implements UserBeanLocal {
 			return "";
 		}
 	}
-
-	public String checkUser(User user) {
-
-		if (em.createNamedQuery("User.checkUser").setParameter("custMail", user.getEmail())
-				.setParameter("custPW", user.getPassword()).getResultList().size() > 0) {
-			return "/home";
-		} else {
-
-			return "";
-		}
-	}
 	
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUser() {
         
-        return (List<User>) em.createNamedQuery("Customer.findAll").getResultList();
+        return (List<User>) em.createNamedQuery("User.findAll").getResultList();
   }
 
 	public void create(User user) {
