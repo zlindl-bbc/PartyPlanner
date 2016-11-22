@@ -16,6 +16,9 @@ body {
 	border-color: #0000a0;
 	width: 150px;
 }
+.centre-container{
+	background-color:#bebeff;
+}
 .standardButton: hover,
 .standardButton: focus {
 	color: #fff;
