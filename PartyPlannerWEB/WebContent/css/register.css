@@ -1,9 +1,8 @@
 @import url(style.css);
 
 .container {
-	width: 300px;
 	text-align: center;
-	margin: 0 auto;
+	margin-left:30vmin;
 }
 
 .inputField {
@@ -12,5 +11,5 @@
 }
 
 form{
-	margin-right:5%;
+	margin-right:30vmin;
 }

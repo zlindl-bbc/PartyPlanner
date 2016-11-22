@@ -1,7 +1,6 @@
 body {
-    font-family: "Verdana", "Verdana", monospace;
-    background-color:#000040;
-    text-align: center;
+	font-family: "Verdana", "Verdana", monospace;
+	background-color: #000040;
 }
 
 .standardButton {
@@ -15,12 +14,16 @@ body {
 	text-transform: uppercase;
 	border-color: #0000a0;
 	width: 150px;
+	text-align:center;
 }
-.centre-container{
-	background-color:#bebeff;
+
+.centre-container {
+	background-color: #bebeff;
+	height:100%;
+	width:80vmin;
 }
-.standardButton: hover,
-.standardButton: focus {
+
+.standardButton:hover {
 	color: #fff;
 	background-color: #53A3CD;
 	border-color: #53A3CD;
