@@ -24,6 +24,7 @@ public class Event implements Serializable {
 
 	@Id
 	private int idEvent;
+	private String eventAdress;
 	private String eventDate;
 	private String eventName;
 	private String eventDescription;
@@ -81,7 +82,15 @@ public class Event implements Serializable {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
+
+	public String getEventAdress() {
+		return eventAdress;
+	}
+
+	public void setEventAdress(String eventAdress) {
+		this.eventAdress = eventAdress;
+	}
+
 	
 
 }
