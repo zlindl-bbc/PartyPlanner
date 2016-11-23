@@ -18,28 +18,47 @@ public class UserController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
     @EJB
-    UserBeanLocal userBean;
+    private UserBeanLocal userBean;
     
 	@Inject
-	User user;
+	private User user;
 	
-	List<User> allUsers;
+	private List<User> allUsers;
 	
-//	@PostConstruct
-//	public void init() {
-//		setAllUsers(registerEjb.getAllUser());
-//		System.out.println(getAllUsers());
-//	}
+	private int status = 0;
 	
 	public String create() {
-		userBean.create(user);
-		return "/login";
+		return userBean.create(user);
 	}
 	
 	public String login() {
-		return userBean.login(user);
+		
+		if(userBean.login(user)) {
+			return "/home";
+		} else {
+			setStatus(-1);
+			return "";
+		}
 	}
 	
+	public boolean isLoginFailed(){
+		if (this.status == -1){
+			setStatus(0);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public User getUser() {
 		return user;
 	}

@@ -1,14 +1,94 @@
+
 <h:html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html">
-
 <h:head>
-	<h:link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" title="specificStyle" href="css/index.css"
+		type="text/css" />
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/dropdownForm.js"></script>
 
 </h:head>
 <h:body>
-<h1>Hallo auf der Homepage von PartyPlanner!!</h1>
+	<div id="top-stuff">
+		<div id="top-bar-out">
+			<div id="container">
+				<div id="topnav">
+					<div class="active-links">
+						<div class="" id="session">
+							<a id="signin-link" href="#"> <em>Have an account?</em> <strong>Sign
+									in</strong>
+							</a>
+						</div>
+						<h:outputText rendered="#{userController.isLoginFailed() == true}" value="Fehler: Bitte überprüfen Sie Ihre Angaben" action=""/>
+						
+						
+						
+						<div style="display: none;" id="signin-dropdown">
+							<h:form class="signin">
+								<fieldset class="textbox">
+									<label class="username"><span>email</span> <h:inputText
+											id="email" name="email" autocomplete="on"
+											value="#{userController.user.email}" required="true"
+											requiredMessage="please enter email"></h:inputText> </label> <label
+										class="username"><span>password</span> <h:inputSecret
+											id="password" name="password" autocomplete="on"
+											value="#{userController.user.password}" required="true"
+											requiredMessage="please enter password"></h:inputSecret> </label>
+								</fieldset>
+
+								<fieldset class="remb">
+									<label class="remember"> <input value="1"
+										name="remember_me" type="checkbox" /><span>Remember me</span>
+									</label>
+									<h:commandButton action="#{userController.login()}"
+										value="Login" class="standardButton" />
+								</fieldset>
+								<p>
+									<a class="newRegister" href="#">Have no account?</a>
+								</p>
+							</h:form>
+						</div>
+
+						<div style="display: none;" id="register-dropdown">
+							<h:form class="register">
+								<fieldset class="textbox">
+									<label class="username"><span>username</span> <h:inputText
+											id="username" name="username" autocomplete="on"
+											value="#{userController.user.username}" required="true"
+											requiredMessage="please enter username"></h:inputText> </label>
+											
+									<label class="username"><span>email</span> <h:inputText
+											id="email" name="email" autocomplete="on"
+											value="#{userController.user.email}" required="true"
+											requiredMessage="please enter email"></h:inputText> </label>
+											
+									 <label	class="username"><span>password</span> <h:inputSecret
+											id="password" name="password" autocomplete="on"
+											value="#{userController.user.password}" required="true"
+											requiredMessage="please enter password"></h:inputSecret> </label>
+								</fieldset>
+
+								<fieldset class="remb">
+									<label class="remember"> <input value="1"
+										name="remember_me" type="checkbox" /><span>Remember me</span>
+									</label>
+									<h:commandButton action="#{userController.create()}"
+										value="Register" class="standardButton" />
+								</fieldset>
+								<p>
+									<a class="newLogin" href="#">Have an account?</a>
+								</p>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<img src="resources/logo.png" id="logo" />
+
+	</div>
 </h:body>
 </h:html>

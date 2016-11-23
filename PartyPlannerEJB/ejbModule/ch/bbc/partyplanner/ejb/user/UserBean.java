@@ -24,16 +24,16 @@ public class UserBean implements UserBeanLocal {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String login(User user) {
+	public boolean login(User user) {
 
 		if (em.createNamedQuery("User.login")
 				.setParameter("userMail", user.getEmail())
 				.setParameter("userPassword", user.getPassword())
 				.getResultList().size() > 0) {
 			LOGGER.info("User " + user.getEmail() + " successfully logged in.");
-			return "/index";
+			return true;
 		} else {
-			return "";
+			return false;
 		}
 	}
 	
@@ -43,7 +43,8 @@ public class UserBean implements UserBeanLocal {
         return (List<User>) em.createNamedQuery("User.findAll").getResultList();
   }
 
-	public void create(User user) {
+	public String create(User user) {
 		em.persist(user);
+		return "/home";
 	}
 }

@@ -9,10 +9,10 @@ import ch.bbc.partyplanner.model.User;
 @Local
 public interface UserBeanLocal {
 	
-	public abstract String login(User user); 
+	public abstract boolean login(User user); 
 	
 	public abstract List<User> getAllUser();
 
-	public abstract void create(User user);
+	public abstract String create(User user);
 
 }

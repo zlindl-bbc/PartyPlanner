@@ -89,22 +89,22 @@ h1 small {
 	color: fff;
 }
 
-a#signin-link {
+a#signin-link, a#register-link {
 	color: #000000;
 	position: relative;
 }
 
-a#signin-link em {
+a#signin-link em, a#register-link em {
 	font-size: 10px;
 	font-style: normal;
 	margin-right: 4px;
 }
 
-a#signin-link strong {
+a#signin-link strong, a#register-link strong {
 	color: #000000;
 }
 
-#signin-dropdown {
+#signin-dropdown, #register-dropdown {
 	background-color: #ffffff;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -117,17 +117,17 @@ a#signin-link strong {
 	display: none;
 }
 
-#signin-dropdown form {
+#signin-dropdown form, #register-dropdown form {
 	cursor: pointer;
 	padding: 10px;
 	text-align: left;
 }
 
-#signin-dropdown .textbox span {
+#signin-dropdown .textbox span, #register-dropdown .textbox span {
 	color: #333333;
 }
 
-#signin-dropdown .textbox input {
+#signin-dropdown .textbox input, #register-dropdown .textbox input {
 	width: 200px;
 }
 
@@ -135,22 +135,22 @@ fieldset {
 	border: none;
 }
 
-form.signin .textbox label {
+form.signin .textbox label, form.register .textbox label {
 	display: block;
 	padding-bottom: 7px;
 }
 
-form.signin .textbox span {
+form.signin .textbox span, form.register .textbox span {
 	display: block;
 }
 
-form.signin p, form.signin span {
+form.signin p, form.register p, form.signin span, form.register span {
 	color: #333333;
 	font-size: 11px;
 	line-height: 18px;
 }
 
-form.signin .textbox input {
+form.signin .textbox input, form.register .textbox input {
 	background: #f3f3f3;
 	border-bottom: 1px solid #333;
 	border-left: 1px solid #000;
@@ -163,13 +163,13 @@ form.signin .textbox input {
 	padding: 6px 6px 4px;
 }
 
-form.signin .remb {
+form.signin .remb, form.register .remb {
 	padding: 9px 0;
 	position: relative;
 	text-align: right;
 }
 
-form.signin .remb .remember {
+form.signin .remb .remember, form.register .remb .remember {
 	text-align: left;
 	position: absolute;
 	left: 0;
