@@ -105,7 +105,7 @@ a#signin-link strong {
 }
 
 #signin-dropdown {
-	background-color: #202020;
+	background-color: #ffffff;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	box-shadow: 0 1px 2px #666666;
@@ -124,7 +124,7 @@ a#signin-link strong {
 }
 
 #signin-dropdown .textbox span {
-	color: #BABABA;
+	color: #333333;
 }
 
 #signin-dropdown .textbox input {
@@ -145,18 +145,18 @@ form.signin .textbox span {
 }
 
 form.signin p, form.signin span {
-	color: #999;
+	color: #333333;
 	font-size: 11px;
 	line-height: 18px;
 }
 
 form.signin .textbox input {
-	background: #666666;
+	background: #f3f3f3;
 	border-bottom: 1px solid #333;
 	border-left: 1px solid #000;
 	border-right: 1px solid #333;
 	border-top: 1px solid #000;
-	color: #fff;
+	color: #333333;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	font: 13px Arial, Helvetica, sans-serif;
@@ -186,7 +186,7 @@ form.signin .remb .remember {
 	border-width: 1px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	color: #333;
+	color: #ffffff;
 	cursor: pointer;
 	display: inline-block;
 	padding: 4px 7px;
@@ -196,4 +196,8 @@ form.signin .remb .remember {
 
 .button:hover {
 	background: #ddd;
+}
+
+#logo{
+	background-image:
 }
