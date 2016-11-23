@@ -6,7 +6,7 @@
 }
 
 body {
-	background-image: url("background.png");
+	background-image: url("../resources/background.png");
 	position: relative;
 	font: 13px Arial, Helvetica, sans-serif;
 }
@@ -199,5 +199,5 @@ form.signin .remb .remember {
 }
 
 #logo{
-	background-image:
+ width:20vmin;
 }
