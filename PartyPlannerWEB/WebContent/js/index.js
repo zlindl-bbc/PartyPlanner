@@ -1,9 +1,5 @@
-$(document).ready(function() {
-	$('#session').click(function() {
-		if ($('#signin-dropdown').is(":visible")) {
-			
-		}
-
-		return false;
-	});
-});
+function isLoginFailed(tried) {
+	if(tried === -1){
+		$("#errorMessage").show();
+	}
+};

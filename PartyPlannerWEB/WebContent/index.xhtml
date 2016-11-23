@@ -6,13 +6,17 @@
 <h:head>
 	<link rel="stylesheet" title="specificStyle" href="css/index.css"
 		type="text/css" />
+	<link rel="stylesheet" title="specificStyle"
+		href="css/bootstrap.min.css" type="text/css" />
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/dropdownForm.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 </h:head>
-<h:body>
-	<div id="top-stuff">
+<h:body onload="isLoginFailed(#{userController.status})">
+	<div id="top-stuff" onload="#{userController.setStatus(0)}">
 		<div id="top-bar-out">
 			<div id="container">
 				<div id="topnav">
@@ -22,7 +26,8 @@
 									in</strong>
 							</a>
 						</div>
-						<h:outputText rendered="#{userController.status == -1}" value="Fehler: Bitte überprüfen Sie Ihre Angaben" />
+						<h:outputText rendered="#{userController.status == -1}"
+							value="Fehler: Bitte überprüfen Sie Ihre Angaben" />
 						<div style="display: none;" id="signin-dropdown">
 							<h:form class="signin">
 								<fieldset class="textbox">
@@ -55,14 +60,12 @@
 									<label class="username"><span>username</span> <h:inputText
 											id="username" name="username" autocomplete="on"
 											value="#{userController.user.username}" required="true"
-											requiredMessage="please enter username"></h:inputText> </label>
-											
-									<label class="username"><span>email</span> <h:inputText
+											requiredMessage="please enter username"></h:inputText> </label> <label
+										class="username"><span>email</span> <h:inputText
 											id="email" name="email" autocomplete="on"
 											value="#{userController.user.email}" required="true"
-											requiredMessage="please enter email"></h:inputText> </label>
-											
-									 <label	class="username"><span>password</span> <h:inputSecret
+											requiredMessage="please enter email"></h:inputText> </label> <label
+										class="username"><span>password</span> <h:inputSecret
 											id="password" name="password" autocomplete="on"
 											value="#{userController.user.password}" required="true"
 											requiredMessage="please enter password"></h:inputSecret> </label>
@@ -83,6 +86,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="alert alert-danger" style="display: none;" id="errorMessage">
+			<strong>Login not successful!</strong> Please try again.
 		</div>
 		<img src="resources/logo.png" id="logo" />
 
