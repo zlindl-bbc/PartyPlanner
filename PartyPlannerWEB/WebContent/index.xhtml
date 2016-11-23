@@ -22,10 +22,7 @@
 									in</strong>
 							</a>
 						</div>
-						<h:outputText rendered="#{userController.isLoginFailed() == true}" value="Fehler: Bitte überprüfen Sie Ihre Angaben" action=""/>
-						
-						
-						
+						<h:outputText rendered="#{userController.status == -1}" value="Fehler: Bitte überprüfen Sie Ihre Angaben" />
 						<div style="display: none;" id="signin-dropdown">
 							<h:form class="signin">
 								<fieldset class="textbox">

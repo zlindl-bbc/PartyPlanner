@@ -41,16 +41,6 @@ public class UserController implements Serializable {
 		}
 	}
 	
-	public boolean isLoginFailed(){
-		if (this.status == -1){
-			setStatus(0);
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
 	public int getStatus() {
 		return status;
 	}
