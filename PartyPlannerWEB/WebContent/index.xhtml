@@ -16,7 +16,7 @@
 
 </h:head>
 <h:body onload="isLoginFailed(#{userController.status}); isSearchFailed(#{eventController.searchStatus})">
-	<div id="top-stuff" onload="#{userController.setStatus(0)}">
+	<div id="top-stuff" onload="#{userController.setStatus(0)}; #[eventController.searchStatus = false]">
 		<div id="top-bar-out">
 			<div id="container">
 				<div id="topnav">

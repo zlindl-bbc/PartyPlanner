@@ -2,12 +2,14 @@ package ch.bbc.partyplanner.controller;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.bbc.partyplanner.ejb.event.EventBean;
 import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
 import ch.bbc.partyplanner.model.Event;
 
@@ -16,6 +18,8 @@ import ch.bbc.partyplanner.model.Event;
 public class EventController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private final static Logger LOGGER = Logger.getLogger(EventBean.class.getName());
 
     @EJB
     EventBeanLocal eventBean;
@@ -77,7 +81,9 @@ public class EventController implements Serializable {
 	
 	public String goToEvent(){
 		if(eventBean.eventExists(requestedEvent)){
-			return "/"+requestedEvent;
+			LOGGER.info("Called Event: "+requestedEvent);
+			LOGGER.info("/event?eventAdress="+requestedEvent);
+			return "/event?eventAdress="+requestedEvent;
 		}else{
 			searchStatus=true;
 			return "/index";

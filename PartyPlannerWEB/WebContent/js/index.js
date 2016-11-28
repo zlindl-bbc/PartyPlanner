@@ -2,11 +2,17 @@ function isLoginFailed(tried) {
 	if(tried === -1){
 		$("#errorMessage").show();
 	}
+	else{
+		$("#errorMessage").hide();
+	}
 };
 
 function isSearchFailed(failed) {
 	if(failed === true){
 		$("#eventNotFoundMessage").show();
+	}
+	else{
+		$("#eventNotFoundMessage").hide();
 	}
 };
 
