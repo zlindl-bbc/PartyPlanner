@@ -15,7 +15,8 @@ import javax.persistence.NamedQuery;
 @Named
 @Entity
 @NamedQueries({ 
-	@NamedQuery(name = "Event.findAll", query = "SELECT c FROM Event c"), 
+	@NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e"), 
+	@NamedQuery(name="Event.findAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
 	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
 	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
 })
@@ -24,7 +25,7 @@ public class Event implements Serializable {
 
 	@Id
 	private int idEvent;
-//	private String eventAdress;
+	private String eventAdress;
 	private String eventDate;
 	private String eventName;
 	private String eventDescription;
@@ -83,13 +84,13 @@ public class Event implements Serializable {
 		this.userId = userId;
 	}
 
-//	public String getEventAdress() {
-//		return eventAdress;
-//	}
-//
-//	public void setEventAdress(String eventAdress) {
-//		this.eventAdress = eventAdress;
-//	}
+	public String getEventAdress() {
+		return eventAdress;
+	}
+
+	public void setEventAdress(String eventAdress) {
+		this.eventAdress = eventAdress;
+	}
 
 	
 
