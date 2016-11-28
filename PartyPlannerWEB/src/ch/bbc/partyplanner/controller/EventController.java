@@ -80,7 +80,7 @@ public class EventController implements Serializable {
 			return "/"+requestedEvent;
 		}else{
 			searchStatus=true;
-			return "";
+			return "/index";
 		}
 	}
 	
