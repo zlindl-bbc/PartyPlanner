@@ -32,6 +32,7 @@ public class EventController implements Serializable {
 
 	@Inject
 	Event event;
+	String requestedEvent;
 	
 	public String create() {
 		eventBean.create(event);
@@ -51,5 +52,15 @@ public class EventController implements Serializable {
 	
 	public void deleteById() {
 		eventBean.deleteById (event);
+	}
+	
+	//<< EventAddressSearch
+	
+	public String goToEvent(){
+		if(eventBean.eventExists(requestedEvent)){
+			return "/"+requestedEvent;
+		}else{
+			return "/index";
+		}
 	}
 }

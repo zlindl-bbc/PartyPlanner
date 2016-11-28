@@ -97,9 +97,9 @@
 		<h:form class="register">
 			<label class="idInput"><B id="idInputTitle">ID </B><h:inputText
 					id="idInput" name="idInput" autocomplete="on"
-					value="#{userController.user.username}" required="true"
+					value="#{eventController.requestedEvent}" required="true"
 					requiredMessage="please enter ID"></h:inputText> </label>
-			<h:commandButton action="#{userController.create()}" value=" search "
+			<h:commandButton action="#{eventController.goToEvent()}" value=" search "
 				class="standardButton" />
 		</h:form>
 	</DIV>
