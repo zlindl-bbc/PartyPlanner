@@ -30,10 +30,20 @@ public class EventController implements Serializable {
 		this.event = event;
 	}
 
+	public String getRequestedEvent() {
+		return requestedEvent;
+	}
+
+	public void setRequestedEvent(String requestedEvent) {
+		this.requestedEvent = requestedEvent;
+	}
+	
 	@Inject
 	Event event;
 	String requestedEvent;
 	
+	
+
 	public String create() {
 		eventBean.create(event);
 		return "/index";
@@ -63,4 +73,6 @@ public class EventController implements Serializable {
 			return "/index";
 		}
 	}
+	
+	//>>
 }
