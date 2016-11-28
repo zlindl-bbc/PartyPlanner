@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 </h:head>
-<h:body onload="isLoginFailed(#{userController.status})">
+<h:body onload="isLoginFailed(#{userController.status}); isSearchFailed(#{eventController.searchStatus})">
 	<div id="top-stuff" onload="#{userController.setStatus(0)}">
 		<div id="top-bar-out">
 			<div id="container">
@@ -89,6 +89,10 @@
 		</div>
 		<div class="alert alert-danger" style="display: none;"
 			id="errorMessage">
+			<strong>Login not successful!</strong> Please try again.
+		</div>
+		<div class="alert alert-danger" style="display: none;"
+			id="eventNotFoundMessage">
 			<strong>Login not successful!</strong> Please try again.
 		</div>
 	</div>

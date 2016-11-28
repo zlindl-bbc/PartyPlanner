@@ -4,6 +4,12 @@ function isLoginFailed(tried) {
 	}
 };
 
+function isSearchFailed(failed) {
+	if(failed === true){
+		$("#eventNotFoundMessage").show();
+	}
+};
+
 
 $(document).ready(function() {
 	$('#session').click(function() {

@@ -22,6 +22,14 @@ public class EventController implements Serializable {
     
     List<Event> allEvents;
     
+	public boolean isSearchStatus() {
+		return searchStatus;
+	}
+
+	public void setSearchStatus(boolean searchStatus) {
+		this.searchStatus = searchStatus;
+	}
+
 	public Event getEvent() {
 		return event;
 	}
@@ -41,6 +49,7 @@ public class EventController implements Serializable {
 	@Inject
 	Event event;
 	String requestedEvent;
+	boolean searchStatus =false;
 	
 	
 
@@ -70,7 +79,8 @@ public class EventController implements Serializable {
 		if(eventBean.eventExists(requestedEvent)){
 			return "/"+requestedEvent;
 		}else{
-			return "/index";
+			searchStatus=true;
+			return "";
 		}
 	}
 	
