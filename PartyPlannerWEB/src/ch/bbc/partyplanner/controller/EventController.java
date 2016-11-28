@@ -32,7 +32,7 @@ public class EventController implements Serializable {
 
 	@Inject
 	Event event;
-
+	
 	public String create() {
 		eventBean.create(event);
 		return "/index";
@@ -51,9 +51,5 @@ public class EventController implements Serializable {
 	
 	public void deleteById() {
 		eventBean.deleteById (event);
-	}
-	
-	public void setAllEvents(List<Event> allEvents) {
-		this.allEvents = allEvents;
 	}
 }
