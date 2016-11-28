@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
 	@NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e"), 
 	@NamedQuery(name="Event.findAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
 	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
-	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
+	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
 })
 public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
