@@ -40,12 +40,12 @@ public class EventController implements Serializable {
 	
 	public List<Event> getAllEvents() {
 		if(allEvents == null) {
-			setAllUsers(eventBean.getAllEvents());
+			setAllEvents(eventBean.getAllEvents());
 		}
 		return allEvents;
 	}
 
-	public void setAllUsers(List<Event> allEvents) {
+	public void setAllEvents(List<Event> allEvents) {
 		this.allEvents = allEvents;
 	}
 	
