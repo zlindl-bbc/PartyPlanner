@@ -87,11 +87,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="alert alert-danger" style="display: none;" id="errorMessage">
+		<div class="alert alert-danger" style="display: none;"
+			id="errorMessage">
 			<strong>Login not successful!</strong> Please try again.
 		</div>
-		<img src="resources/logo.png" id="logo" />
-
 	</div>
+	<img src="resources/logo.png" id="logo" />
+	<DIV id="contentCentered">
+		<h:form class="register">
+			<label class="idInput"><B id="idInputTitle">ID </B><h:inputText
+					id="idInput" name="idInput" autocomplete="on"
+					value="#{userController.user.username}" required="true"
+					requiredMessage="please enter ID"></h:inputText> </label>
+			<h:commandButton action="#{userController.create()}" value=" search "
+				class="standardButton" />
+		</h:form>
+	</DIV>
 </h:body>
 </h:html>
