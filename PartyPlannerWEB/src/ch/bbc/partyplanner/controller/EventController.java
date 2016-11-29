@@ -6,9 +6,11 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 import ch.bbc.partyplanner.ejb.event.EventBean;
 import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
@@ -91,15 +93,29 @@ public class EventController implements Serializable {
 	public void setUserController(UserController userController) {
 		this.userController = userController;
 	}
+	
 
 	public String goToEvent() {
-		if (eventBean.eventExists(requestedEvent)) {
-			LOGGER.info("Called Event: " + requestedEvent);
-			LOGGER.info("/event?eventAdress=" + requestedEvent);
-			return "/event?eventAdress=" + requestedEvent;
+		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		String eventAdress = origRequest.getParameter("eventAdress");
+
+		if (eventAdress.equals(null)) {
+			if (!requestedEvent.equals(null)) {
+				eventAdress = requestedEvent;
+			}
 		} else {
-			searchStatus = true;
-			return "/index";
+			if (eventBean.eventExists(eventAdress)) {
+				LOGGER.info("Called Event: " + eventAdress);
+				LOGGER.info("/event?eventAdress=" + eventAdress);
+
+				return "/event?eventAdress=" + eventAdress;
+			} else {
+				searchStatus = true;
+				return "/index";
+			}
 		}
+		searchStatus = true;
+		return "/index";
 	}
 }
