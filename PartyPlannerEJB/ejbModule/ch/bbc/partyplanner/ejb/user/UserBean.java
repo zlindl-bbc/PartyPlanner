@@ -24,16 +24,18 @@ public class UserBean implements UserBeanLocal {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean login(User user) {
+	@SuppressWarnings("unchecked")
+	public User login(User user) {
 
-		if (em.createNamedQuery("User.login")
+		List<User> userList = em.createNamedQuery("User.login")
 				.setParameter("userMail", user.getEmail())
 				.setParameter("userPassword", user.getPassword())
-				.getResultList().size() > 0) {
+				.getResultList();
+		if(userList != null & userList.size() == 1) {
 			LOGGER.info("User " + user.getEmail() + " successfully logged in.");
-			return true;
+			return userList.get(0);
 		} else {
-			return false;
+			return null;
 		}
 	}
 	

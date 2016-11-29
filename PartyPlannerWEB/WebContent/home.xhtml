@@ -19,7 +19,7 @@
 
 			<div class="active-links">
 				<div class="" id="session">
-					<a id="signin-link" href="#"> <strong>Log out </strong>
+					<a id="signin-link" href="#{userController.logout()}"> <strong>Log out </strong>
 					</a>
 				</div>
 
@@ -37,33 +37,40 @@
 	</div>
 	<div id="container">
 		<h1 id="title">Deine Events</h1>
-	
-	<h:dataTable value="#{eventController.allEvents}" var="event"
-		styleClass="order-table" headerClass="order-table-header"
-		rowClasses="order-table-odd-row,order-table-even-row">
 
-		<h:column>
-			<!-- column header -->
-			<f:facet name="header">Titel</f:facet>
-			<!-- row record -->
-    				#{event.getEventName()}
+		<h:dataTable var="evt" value="#{eventController.allEvents}"
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
+
+			<h:column>
+				<!-- column header -->
+				<f:facet name="header">EventAdress</f:facet>
+				<!-- row record -->
+				<h:outputText value="#{evt.eventAdress}" />
+    			</h:column>
+			
+			<h:column>
+				<!-- column header -->
+				<f:facet name="header">Titel</f:facet>
+				<!-- row record -->
+    				#{evt.eventName}
     			</h:column>
 
-		<h:column>
-			<f:facet name="header">Datum</f:facet>
-    				#{event.getEventDate()}
+			<h:column>
+				<f:facet name="header">Datum</f:facet>
+    				#{evt.eventDateAsString}
     			</h:column>
 
-		<h:column>
-			<f:facet name="header">Beschreibung</f:facet>
-    				#{event.getEventDescription()}
+			<h:column>
+				<f:facet name="header">Beschreibung</f:facet>
+    				#{evt.eventDescription}
     			</h:column>
 
-		<h:column>
-			<f:facet name="header">EventHost</f:facet>
-    				#{event.getUserId()}
+			<h:column>
+				<f:facet name="header">EventHost</f:facet>
+    				#{evt.userId}
     			</h:column>
-	</h:dataTable>
+		</h:dataTable>
 	</div>
 </h:body>
 </h:html>

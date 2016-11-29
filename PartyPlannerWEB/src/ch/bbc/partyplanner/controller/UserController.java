@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import ch.bbc.partyplanner.ejb.user.UserBeanLocal;
 import ch.bbc.partyplanner.model.User;
@@ -24,7 +26,7 @@ public class UserController implements Serializable {
 	private User user;
 	
 	private List<User> allUsers;
-	
+	private boolean userLoggedIn = false;
 	private int status = 0;
 	
 	public String create() {
@@ -32,13 +34,25 @@ public class UserController implements Serializable {
 	}
 	
 	public String login() {
+		User loggedIn = userBean.login(user);
 		
-		if(userBean.login(user)) {
-			return "/home";
+		if(loggedIn != null) {
+			setUserLoggedIn(true);
+			setUser(loggedIn);
+			return "/home?faces-redirect=true";
 		} else {
 			setStatus(-1);
+			setUserLoggedIn(false);
 			return "";
 		}
+	}
+	
+	public String logout() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+	            .getExternalContext().getSession(false);
+	    session.invalidate();
+	    setUserLoggedIn(false);
+	    return "index.xhtml";
 	}
 	
 	public int getStatus() {
@@ -66,5 +80,13 @@ public class UserController implements Serializable {
 
 	public void setAllUsers(List<User> allUsers) {
 		this.allUsers = allUsers;
+	}
+
+	public boolean isUserLoggedIn() {
+		return userLoggedIn;
+	}
+
+	public void setUserLoggedIn(boolean userLoggedIn) {
+		this.userLoggedIn = userLoggedIn;
 	}
 }

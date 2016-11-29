@@ -9,7 +9,7 @@ import ch.bbc.partyplanner.model.User;
 @Local
 public interface UserBeanLocal {
 	
-	public abstract boolean login(User user); 
+	public abstract User login(User user); 
 	
 	public abstract List<User> getAllUser();
 

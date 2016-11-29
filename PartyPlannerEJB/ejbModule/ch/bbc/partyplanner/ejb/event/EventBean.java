@@ -1,6 +1,7 @@
 package ch.bbc.partyplanner.ejb.event;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,7 +15,8 @@ import ch.bbc.partyplanner.model.Event;
 @Stateless
 public class EventBean implements EventBeanLocal {
 
-
+	private final static Logger LOGGER = Logger.getLogger(EventBean.class.getName());
+	
 	@PersistenceContext
 	EntityManager em;
 
@@ -34,6 +36,23 @@ public class EventBean implements EventBeanLocal {
 
 	public void deleteById(Event event) {
 		em.createNamedQuery("Event.deleteById");
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Event> getAllEventsByUserId(int userId) {
+		 return (List<Event>) em.createNamedQuery("Event.findAllByUserId").setParameter("userId", userId).getResultList();
+	}
+	
+	public boolean eventExists(String eventAdress) {
+
+		if (em.createNamedQuery("Event.findAdress")
+				.setParameter("eventAdress", eventAdress)
+				.getResultList().size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	
