@@ -20,11 +20,18 @@ import javax.persistence.TemporalType;
 @Named
 @Entity
 @NamedQueries({ 
+<<<<<<< HEAD
 	@NamedQuery(name="Event.findAll", query ="SELECT e FROM Event e"), 
 	@NamedQuery(name="Event.findAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
 	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
 	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
     @NamedQuery(name="Event.findAllByUserId", query="SELECT e FROM Event e WHERE e.userId = :userId")
+=======
+	@NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e"), 
+	@NamedQuery(name="Event.findAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
+	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
+	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
+>>>>>>> origin/master
 })
 public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -32,12 +39,18 @@ public class Event implements Serializable {
 
 	@Id
 	private int idEvent;
+<<<<<<< HEAD
 
 	private String eventAdress;
 
 	@Temporal(TemporalType.DATE)
 	private Date eventDate;
 
+=======
+	private String eventAdress;
+	private String eventDate;
+	private String eventName;
+>>>>>>> origin/master
 	private String eventDescription;
 
 	private String eventName;
@@ -104,6 +117,18 @@ public class Event implements Serializable {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+<<<<<<< HEAD
+=======
+
+	public String getEventAdress() {
+		return eventAdress;
+	}
+
+	public void setEventAdress(String eventAdress) {
+		this.eventAdress = eventAdress;
+	}
+
+>>>>>>> origin/master
 	
 	public String getEventDateAsString() {
 		return SDF.format(getEventDate());

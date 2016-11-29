@@ -15,8 +15,8 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 </h:head>
-<h:body onload="isLoginFailed(#{userController.status})">
-	<div id="top-stuff" onload="#{userController.setStatus(0)}">
+<h:body onload="isLoginFailed(#{userController.status}); isSearchFailed(#{eventController.searchStatus})">
+	<div id="top-stuff" onload="#{userController.setStatus(0)}; #[eventController.searchStatus = false]">
 		<div id="top-bar-out">
 			<div id="container">
 				<div id="topnav">
@@ -26,8 +26,6 @@
 									in</strong>
 							</a>
 						</div>
-						<h:outputText rendered="#{userController.status == -1}"
-							value="Fehler: Bitte überprüfen Sie Ihre Angaben" />
 						<div style="display: none;" id="signin-dropdown">
 							<h:form class="signin">
 								<fieldset class="textbox">
@@ -87,11 +85,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="alert alert-danger" style="display: none;" id="errorMessage">
+		<div class="alert alert-danger" style="display: none;"
+			id="errorMessage">
 			<strong>Login not successful!</strong> Please try again.
 		</div>
-		<img src="resources/logo.png" id="logo" />
-
+		<div class="alert alert-danger" style="display: none;"
+			id="eventNotFoundMessage">
+			<strong>Event not found!</strong> Please try again.
+		</div>
 	</div>
+	<img src="resources/logo.png" id="logo" />
+	<DIV id="contentCentered">
+		<h:form class="register">
+			<label class="idInput"><B id="idInputTitle">ID </B><h:inputText
+					id="idInput" name="idInput" autocomplete="on"
+					value="#{eventController.requestedEvent}" required="true"
+					requiredMessage="please enter ID"></h:inputText> </label>
+			<h:commandButton action="#{eventController.goToEvent()}" value=" search "
+				class="standardButton" />
+		</h:form>
+	</DIV>
 </h:body>
 </h:html>

@@ -16,6 +16,13 @@ a {
 	color: #00c6ff;
 }
 
+.standardbutton{
+	border-radius:5px;
+	background-color:white;
+	margin-left:3px;
+	font-color:black;
+}
+
 h1 {
 	font-family: "NettoOT";
 	font-size: 1.5rem;
@@ -78,7 +85,7 @@ h1 small {
 #session {
 	cursor: pointer;
 	display: inline-block;
-	height: 20px;
+	height: 40px;
 	padding: 10px 12px;
 	vertical-align: top;
 	white-space: nowrap;
@@ -176,5 +183,26 @@ form.signin .remb .remember, form.register .remb .remember {
 }
 
 #logo{
- width:20vmin;
+	float:left;
+	margin-top:10vmin;
+	width:20vmin;
+}
+
+.idInput{
+	color:#000000;
+}
+
+#idInputTitle{
+	color:#ffffff;
+}
+
+#contentCentered{
+	font-color:#000000;
+	width:auto;
+	height:auto;
+	float:left;
+	padding:10px;
+	margin:20vmin;
+	margin-top:30vmin;
+	font-size:30px;
 }
