@@ -85,7 +85,7 @@ h1 small {
 #session {
 	cursor: pointer;
 	display: inline-block;
-	height: 40px;
+	height: 20px;
 	padding: 10px 12px;
 	vertical-align: top;
 	white-space: nowrap;
