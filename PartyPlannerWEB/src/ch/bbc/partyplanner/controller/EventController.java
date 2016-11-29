@@ -20,9 +20,6 @@ public class EventController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private final static Logger LOGGER = Logger.getLogger(EventBean.class.getName());
-
-<<<<<<< HEAD
 	private final static Logger LOGGER = Logger.getLogger(EventController.class.getName());
 
 	@EJB
@@ -37,19 +34,15 @@ public class EventController implements Serializable {
 	public void init() {
 		List<Event> events = eventBean.getAllEventsByUserId(getUserController().getUser().getidUser());
 		setAllEvents(events);
-=======
-    @EJB
-    EventBeanLocal eventBean;
-    
-    List<Event> allEvents;
-    
+	}
+		
+		
 	public boolean isSearchStatus() {
 		return searchStatus;
 	}
 
 	public void setSearchStatus(boolean searchStatus) {
 		this.searchStatus = searchStatus;
->>>>>>> origin/master
 	}
 
 	public Event getEvent() {
@@ -67,21 +60,11 @@ public class EventController implements Serializable {
 	public void setRequestedEvent(String requestedEvent) {
 		this.requestedEvent = requestedEvent;
 	}
-<<<<<<< HEAD
-
-	@Inject
-	Event event;
-	String requestedEvent;
-	boolean searchStatus = false;
-=======
-	
 	@Inject
 	Event event;
 	String requestedEvent;
 	boolean searchStatus =false;
 	
-	
->>>>>>> origin/master
 
 	public String create() {
 		eventBean.create(event);
@@ -100,13 +83,6 @@ public class EventController implements Serializable {
 		eventBean.deleteById(event);
 	}
 
-	public boolean isSearchStatus() {
-		return searchStatus;
-	}
-
-	public void setSearchStatus(boolean searchStatus) {
-		this.searchStatus = searchStatus;
-	}
 
 	public UserController getUserController() {
 		return userController;
@@ -126,19 +102,4 @@ public class EventController implements Serializable {
 			return "/index";
 		}
 	}
-	
-	//<< EventAddressSearch
-	
-	public String goToEvent(){
-		if(eventBean.eventExists(requestedEvent)){
-			LOGGER.info("Called Event: "+requestedEvent);
-			LOGGER.info("/event?eventAdress="+requestedEvent);
-			return "/event?eventAdress="+requestedEvent;
-		}else{
-			searchStatus=true;
-			return "/index";
-		}
-	}
-	
-	//>>
 }

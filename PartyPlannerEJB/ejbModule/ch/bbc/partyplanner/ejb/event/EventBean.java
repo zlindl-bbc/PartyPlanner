@@ -55,16 +55,5 @@ public class EventBean implements EventBeanLocal {
 		}
 	}
 	
-	public boolean eventExists(String eventAdress) {
-
-		if (em.createNamedQuery("Event.findAdress")
-				.setParameter("eventAdress", eventAdress)
-				.getResultList().size() > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
 	
 }
