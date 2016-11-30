@@ -100,8 +100,8 @@ public class EventController implements Serializable {
 				.getRequest();
 		String eventAdress = origRequest.getParameter("eventAdress");
 
-		if (eventAdress.equals(null)) {
-			if (!requestedEvent.equals(null)) {
+		if (eventAdress == null) {
+			if (!(requestedEvent == null)) {
 				eventAdress = requestedEvent;
 			}
 		} else {

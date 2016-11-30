@@ -15,3 +15,20 @@ h1 {
 #title {
 	margin: 20px 0 20px 20px;
 }
+
+.order-table-odd-row{
+	border: 1px solid #16066f;
+	background-color:#c2c2ff;
+}
+
+.order-table-even-row{
+	border: 1px solid #16066f;
+	background-color:#FFFFFF;
+}
+
+.order-table-header{
+	border: 1px solid #16066f;
+	padding-left:5px;
+	background-color:#16066f;
+	color:#ffffff;
+}
