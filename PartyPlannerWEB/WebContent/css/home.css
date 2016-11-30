@@ -33,3 +33,9 @@ h1 {
 	background-color:#16066f;
 	color:#ffffff;
 }
+
+.imagebutton{
+	height:20px;
+	width:50px;
+	margin:2px;
+}

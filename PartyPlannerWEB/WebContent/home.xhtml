@@ -55,12 +55,14 @@
 				<f:facet name="header">Beschreibung</f:facet>
     				#{evt.eventDescription}
     			</h:column>
-    			
+
     		 <h:column>
-                    <h:commandButton icon="/resources/delete-blue.png"
-                        title="Delete this actor"
+                    <h:commandButton 
+                    	class="imageButton"
+                    	title="Delete this actor"
+                    	image="../resources/delete-blue.png"
                         actionListener="#{eventController.deleteById(evt.userId)}"
-                        ajax="false" />
+                        ajax="false"/>
                 </h:column>
 
 		</h:dataTable>
