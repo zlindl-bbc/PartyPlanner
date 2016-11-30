@@ -3,6 +3,8 @@
 .order-table {
 	border-collapse: collapse;
 	text-align: left;
+	width: 680px;
+	margin: 0 50px 0 50px;
 }
 
 .order-table-header {
