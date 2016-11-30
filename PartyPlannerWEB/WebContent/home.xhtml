@@ -56,6 +56,12 @@
     				#{evt.eventDescription}
     			</h:column>
     			
+    		 <h:column>
+                    <h:commandButton icon="/resources/delete-blue.png"
+                        title="Delete this actor"
+                        actionListener="#{eventController.deleteById(evt.userId)}"
+                        ajax="false" />
+                </h:column>
 
 		</h:dataTable>
 	</div>
