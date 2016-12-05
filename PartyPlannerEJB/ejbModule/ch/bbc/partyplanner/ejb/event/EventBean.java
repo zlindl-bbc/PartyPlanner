@@ -35,7 +35,6 @@ public class EventBean implements EventBeanLocal {
   }
 
 	public void deleteById(int eventId) {
-		System.out.println("delete event id " + eventId);
 		em.createNamedQuery("Event.deleteById").setParameter("eventId", eventId).executeUpdate();
 	}
 
