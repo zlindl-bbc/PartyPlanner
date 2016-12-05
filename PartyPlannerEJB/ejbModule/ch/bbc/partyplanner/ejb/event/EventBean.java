@@ -35,7 +35,8 @@ public class EventBean implements EventBeanLocal {
   }
 
 	public void deleteById(int eventId) {
-		em.createNamedQuery("Event.deleteById").setParameter("eventId", eventId);
+		System.out.println("delete event id " + eventId);
+		em.createNamedQuery("Event.deleteById").setParameter("eventId", eventId).executeUpdate();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -45,7 +46,6 @@ public class EventBean implements EventBeanLocal {
 	}
 	
 	public boolean eventExists(String eventAdress) {
-
 		if (em.createNamedQuery("Event.findAdress")
 				.setParameter("eventAdress", eventAdress)
 				.getResultList().size() > 0) {

@@ -74,7 +74,6 @@ public class EventController implements Serializable {
 	}	
 
 	public String deleteById() {
-		System.out.println("deleteById executed: " + getCurrentEventId());
 		eventBean.deleteById(getCurrentEventId());
 		return "";
 	}
