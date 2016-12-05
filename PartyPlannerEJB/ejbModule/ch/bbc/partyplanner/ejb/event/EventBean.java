@@ -34,8 +34,8 @@ public class EventBean implements EventBeanLocal {
         return (List<Event>) em.createNamedQuery("Event.findAll").getResultList();
   }
 
-	public void deleteById(Event event) {
-		em.createNamedQuery("Event.deleteById");
+	public void deleteById(int eventId) {
+		em.createNamedQuery("Event.deleteById").setParameter("eventId", eventId);
 	}
 
 	@SuppressWarnings("unchecked")
