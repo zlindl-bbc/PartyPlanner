@@ -20,9 +20,7 @@ import ch.bbc.partyplanner.model.Event;
 public class EventController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	private final static Logger LOGGER = Logger.getLogger(EventController.class.getName());
-
 	private int currentEventId;
 
 	@EJB

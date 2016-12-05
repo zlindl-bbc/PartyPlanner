@@ -18,6 +18,6 @@ public class EventViewBean implements EventViewBeanLocal {
 	EntityManager em;
 
 	public EventViewBean() {
-		// TODO Auto-generated constructor stub
+		
 	}
 }
