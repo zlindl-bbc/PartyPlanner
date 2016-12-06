@@ -21,9 +21,9 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name="Event.findAll", query ="SELECT e FROM Event e"), 
-	@NamedQuery(name="Event.findAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
+	@NamedQuery(name="Event.findByAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
 	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
-	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.productId = :eventProductId, e.userId = :eventUserId"),			
+	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.userId = :eventUserId"),			
     @NamedQuery(name="Event.findAllByUserId", query="SELECT e FROM Event e WHERE e.userId = :userId"),
 })
 public class Event implements Serializable {
@@ -38,7 +38,6 @@ public class Event implements Serializable {
 	private String eventAdress;
 	private String eventName;
 	private String eventDescription;
-	private int productId;
 	private int userId;
 
 	public Event() {
@@ -82,14 +81,6 @@ public class Event implements Serializable {
 
 	public void setEventName(String eventName) {
 		this.eventName = eventName;
-	}
-
-	public int getProductId() {
-		return this.productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
 	}
 
 	public int getUserId() {

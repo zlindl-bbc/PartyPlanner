@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
+import ch.bbc.partyplanner.ejb.eventView.EventViewBeanLocal;
 import ch.bbc.partyplanner.model.Event;
 
 @Named
@@ -19,6 +20,7 @@ public class EventViewController implements Serializable{
 	private int currentEventId;
 
 	@EJB
+	private EventViewBeanLocal eventViewBean;
 	private EventBeanLocal eventBean;
 
 	@Inject
@@ -29,10 +31,13 @@ public class EventViewController implements Serializable{
 	public String getEventInfo() {
 		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		String eventAdress = origRequest.getParameter("eventAdress");
+		
+		event=eventViewBean.getEventbyAdress(eventAdress);
 
-		if (!(eventAdress == null)) {
+		if (!(eventAdress.equals(""))) {
 			if (eventBean.eventExists(eventAdress)) {
 				LOGGER.info("Called Event: " + eventAdress);
+				return event.getEventName();
 			}
 		}
 		return "/index";

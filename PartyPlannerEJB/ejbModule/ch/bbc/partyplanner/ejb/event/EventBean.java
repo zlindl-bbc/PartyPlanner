@@ -52,7 +52,5 @@ public class EventBean implements EventBeanLocal {
 		} else {
 			return false;
 		}
-	}
-	
-	
+	}	
 }
