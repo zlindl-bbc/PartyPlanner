@@ -21,6 +21,8 @@ public class EventViewController implements Serializable{
 
 	@EJB
 	private EventViewBeanLocal eventViewBean;
+	
+	@EJB
 	private EventBeanLocal eventBean;
 
 	@Inject
