@@ -21,7 +21,7 @@ public class EventViewController implements Serializable{
 
 	@EJB
 	private EventViewBeanLocal eventViewBean;
-	
+
 	@EJB
 	private EventBeanLocal eventBean;
 
@@ -33,7 +33,7 @@ public class EventViewController implements Serializable{
 	public String getEventInfo() {
 		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		String eventAdress = origRequest.getParameter("eventAdress");
-		
+
 		event=eventViewBean.getEventbyAdress(eventAdress);
 		LOGGER.info("Called Event: " + eventAdress);
 		if (!(eventAdress.equals(""))) {
