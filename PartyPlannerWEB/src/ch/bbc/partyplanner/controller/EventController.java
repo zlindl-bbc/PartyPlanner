@@ -47,25 +47,20 @@ public class EventController implements Serializable {
 	public String goToEvent() {
 		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-		String eventAdress = origRequest.getParameter("eventAdress");
+		
 
-		if (eventAdress == null) {
-			if (!(requestedEvent == null)) {
-				eventAdress = requestedEvent;
-			}
-		} else {
+				String eventAdress = requestedEvent;
 			if (eventBean.eventExists(eventAdress)) {
 				LOGGER.info("Called Event: " + eventAdress);
-				LOGGER.info("/event?eventAdress=" + eventAdress);
+				LOGGER.info("/catchEvent?eventAdress=" + eventAdress);
 
-				return "/event?eventAdress=" + eventAdress;
+				return "/catchEvent?faces-redirect=true&eventAdress=" + eventAdress;
 			} else {
+				LOGGER.info("Called Event: " + eventAdress);
+				LOGGER.info("Go To: /index");
 				searchStatus = true;
 				return "/index";
 			}
-		}
-		searchStatus = true;
-		return "/index";
 	}
 
 	public String create() {
