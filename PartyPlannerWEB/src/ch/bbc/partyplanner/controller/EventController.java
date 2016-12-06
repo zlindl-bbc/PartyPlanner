@@ -2,10 +2,12 @@ package ch.bbc.partyplanner.controller;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -16,7 +18,7 @@ import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
 import ch.bbc.partyplanner.model.Event;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class EventController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -67,9 +69,20 @@ public class EventController implements Serializable {
 	}
 
 	public String create() {
+		event.setEventAdress(generateEventAdress());
 		eventBean.create(event);
 		return "/index";
-	}	
+	}
+
+	public String generateEventAdress() {
+		String usableChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+		for (int i = 0; i < 14; i++) {
+			sb.append(usableChars.charAt(random.nextInt(usableChars.length())));
+		}
+		return sb.toString();
+	}
 
 	public String deleteById() {
 		eventBean.deleteById(getCurrentEventId());
