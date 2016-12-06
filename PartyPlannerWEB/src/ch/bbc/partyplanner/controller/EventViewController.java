@@ -33,7 +33,7 @@ public class EventViewController implements Serializable{
 		String eventAdress = origRequest.getParameter("eventAdress");
 		
 		event=eventViewBean.getEventbyAdress(eventAdress);
-
+		LOGGER.info("Called Event: " + eventAdress);
 		if (!(eventAdress.equals(""))) {
 			if (eventBean.eventExists(eventAdress)) {
 				LOGGER.info("Called Event: " + eventAdress);

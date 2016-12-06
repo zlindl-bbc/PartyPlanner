@@ -32,12 +32,6 @@ private final static Logger LOGGER = Logger.getLogger(EventBean.class.getName())
 		em.persist(product);
 	}
 
-
-	@SuppressWarnings("unchecked")
-	public List<Event> getAllEvents() {
-        return (List<Event>) em.createNamedQuery("Event.findAll").getResultList();
-  }
-
 	public void deleteById(int eventId) {
 		em.createNamedQuery("Event.deleteById").setParameter("eventId", eventId).executeUpdate();
 	}
