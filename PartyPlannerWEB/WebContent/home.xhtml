@@ -6,26 +6,23 @@
 <h:head>
 	<link rel="stylesheet" title="specificStyle" href="css/home.css"
 		type="text/css" />
-
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/dropdownForm.js"></script>
 </h:head>
 
 <h:body>
-	
-		<div id="top-bar-out">
-			<div class="active-links">
-				<div class="" id="session">
-					<a id="signin-link" href="#{userController.logout()}"> <strong>Log
-							out </strong>
-					</a>
-				</div>
+
+	<div id="top-bar-out">
+		<div class="active-links">
+			<div class="" id="session">
+				<a id="signin-link" href="#{userController.logout()}"> <strong>Log
+						out </strong>
+				</a>
 			</div>
 		</div>
+	</div>
 
-		<img src="resources/logo.png" id="logo" />
+	<img src="resources/logo.png" id="logo" />
 
-	
+
 
 	<div id="container">
 		<h1 id="title">Deine Events</h1>
@@ -46,28 +43,28 @@
 				<!-- column header -->
 				<f:facet name="header">Titel</f:facet>
 				<!-- row record -->
-    				#{evt.eventName}
-    			</h:column>
+				<h:outputText value="#{evt.eventName}" />
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Datum</f:facet>
-    				#{evt.eventDateAsString}
-    			</h:column>
+				<h:outputText value="#{evt.eventDateAsString}" />
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Beschreibung</f:facet>
-    				#{evt.eventDescription}
-    			</h:column>
+				<h:outputText value="#{evt.eventDescription}" />
+			</h:column>
 
 			<h:column>
 				<h:form>
-					<h:commandButton value="Del"
-						action="#{eventController.deleteById}">
+					<h:commandButton value="Del" action="#{eventController.deleteById}">
 						<f:setPropertyActionListener
 							target="#{eventController.currentEventId}" value="#{evt.idEvent}" />
 					</h:commandButton>
 				</h:form>
 			</h:column>
+
 
 		</h:dataTable>
 
