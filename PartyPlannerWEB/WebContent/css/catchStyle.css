@@ -39,3 +39,20 @@ h1 {
 	width:50px;
 	margin:2px;
 }
+
+.content{
+	margin:10vmin;
+}
+
+#eventTitle{
+	font: 35px Arial, Helvetica, sans-serif;
+	margin: 20px 0 20px 20px;
+}
+
+#eventDate{
+	font-size:15px;
+}
+
+#eventDescription{
+	font-size:20px;
+}

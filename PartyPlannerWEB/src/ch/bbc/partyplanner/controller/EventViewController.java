@@ -14,11 +14,11 @@ import ch.bbc.partyplanner.model.Event;
 
 @Named
 @ViewScoped
-public class EventViewController implements Serializable{
+public class EventViewController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final static Logger LOGGER = Logger.getLogger(EventController.class.getName());
 	private int currentEventId;
-
+	private String currentEventAdress;
 	@EJB
 	private EventViewBeanLocal eventViewBean;
 
@@ -30,18 +30,27 @@ public class EventViewController implements Serializable{
 	private String requestedEvent;
 	private boolean searchStatus = false;
 
-	public String getEventInfo() {
-		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		String eventAdress = origRequest.getParameter("eventAdress");
+	public String getEventTitle() {
+		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		currentEventAdress = origRequest.getParameter("eventAdress");
 
-		event=eventViewBean.getEventbyAdress(eventAdress);
-		LOGGER.info("Called Event: " + eventAdress);
-		if (!(eventAdress.equals(""))) {
-			if (eventBean.eventExists(eventAdress)) {
-				LOGGER.info("Called Event: " + eventAdress);
+		event = eventViewBean.getEventbyAdress(currentEventAdress);
+		LOGGER.info("Called Event: " + currentEventAdress);
+		if (!(currentEventAdress.equals(""))) {
+			if (eventBean.eventExists(currentEventAdress)) {
+				LOGGER.info("Called Event: " + currentEventAdress);
 				return event.getEventName();
 			}
 		}
 		return "/index";
+	}
+
+	public String getEventDescription() {
+		return event.getEventDescription();
+	}
+
+	public String getEventDate() {
+		return event.getEventDate().toLocaleString();
 	}
 }
