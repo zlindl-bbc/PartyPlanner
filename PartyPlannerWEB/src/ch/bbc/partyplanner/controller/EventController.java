@@ -2,6 +2,7 @@ package ch.bbc.partyplanner.controller;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -47,31 +48,38 @@ public class EventController implements Serializable {
 	public String goToEvent() {
 		HttpServletRequest origRequest = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-		String eventAdress = origRequest.getParameter("eventAdress");
+		
 
-		if (eventAdress == null) {
-			if (!(requestedEvent == null)) {
-				eventAdress = requestedEvent;
-			}
-		} else {
+				String eventAdress = requestedEvent;
 			if (eventBean.eventExists(eventAdress)) {
 				LOGGER.info("Called Event: " + eventAdress);
-				LOGGER.info("/event?eventAdress=" + eventAdress);
+				LOGGER.info("/catchEvent?eventAdress=" + eventAdress);
 
-				return "/event?eventAdress=" + eventAdress;
+				return "/catchEvent?faces-redirect=true&eventAdress=" + eventAdress;
 			} else {
+				LOGGER.info("Called Event: " + eventAdress);
+				LOGGER.info("Go To: /index");
 				searchStatus = true;
 				return "/index";
 			}
-		}
-		searchStatus = true;
-		return "/index";
 	}
 
 	public String create() {
+		event.setEventAdress(generateEventAdress());
 		eventBean.create(event);
 		return "/index";
 	}
+
+	public String generateEventAdress() {
+		String usableChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+		StringBuilder sb = new StringBuilder();
+		Random random = new Random();
+		for (int i = 0; i < 14; i++) {
+			sb.append(usableChars.charAt(random.nextInt(usableChars.length())));
+		}
+		return sb.toString();
+	}
+
 
 	public String deleteById() {
 		eventBean.deleteById(getCurrentEventId());
