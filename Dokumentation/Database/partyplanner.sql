@@ -61,10 +61,8 @@ CREATE TABLE `event` (
   `eventDate` date NOT NULL,
   `eventName` varchar(100) NOT NULL,
   `eventDescription` varchar(500) DEFAULT NULL,
-  `productId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   PRIMARY KEY (`idEvent`),
-  KEY `product_idx` (`productId`),
   KEY `user_idx` (`userId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -75,7 +73,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'','9999-12-31','Hallo EventName','Das ist die Beschreibung',1,1);
+INSERT INTO `event` VALUES (1,'dskruzfgkasdjfglufgzkasjdffg','9999-12-12','ksdjfg','jhfg',3);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +117,7 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(75) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +126,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'testUser','test@mail.ch','testPassword'),(3,'luca','luca@luca.com','123456'),(4,'lucalindegger@luca.com','luca','123456');
+INSERT INTO `user` VALUES (2,'testUser','test@mail.ch','testPassword'),(3,'luca','luca@luca.com','123456'),(4,'lucalindegger@luca.com','luca','123456'),(5,'lukasHorst','luki@horst.com','123456'),(6,'simon','simon@spezial.fall','123456');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-22  9:50:10
+-- Dump completed on 2016-12-06  9:47:50
