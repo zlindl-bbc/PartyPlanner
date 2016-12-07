@@ -25,6 +25,8 @@ public class UserController implements Serializable {
 	@Inject
 	private User user;
 	
+	private User loggedInUser;
+	
 	private List<User> allUsers;
 	private boolean userLoggedIn = false;
 	private int status = 0;
@@ -38,7 +40,7 @@ public class UserController implements Serializable {
 		
 		if(loggedIn != null) {
 			setUserLoggedIn(true);
-			setUser(loggedIn);
+			setLoggedInUser(loggedIn);
 			return "/home?faces-redirect=true";
 		} else {
 			setStatus(-1);
@@ -88,5 +90,13 @@ public class UserController implements Serializable {
 
 	public void setUserLoggedIn(boolean userLoggedIn) {
 		this.userLoggedIn = userLoggedIn;
+	}
+
+	public User getLoggedInUser() {
+		return loggedInUser;
+	}
+
+	public void setLoggedInUser(User loggedInUser) {
+		this.loggedInUser = loggedInUser;
 	}
 }
