@@ -34,6 +34,8 @@ public class EventViewController implements Serializable {
 	@Inject
 	private Event event;
 
+	private String productToDeleteId;
+	private String Amount;
 	private List<Product> products;
 	private String requestedEvent;
 	private boolean searchStatus = false;
@@ -56,6 +58,10 @@ public class EventViewController implements Serializable {
 		initProducts();
 	}
 
+	public void bring(){
+		
+	}
+	
 	public String getEventDescription() {
 		return event.getEventDescription();
 	}

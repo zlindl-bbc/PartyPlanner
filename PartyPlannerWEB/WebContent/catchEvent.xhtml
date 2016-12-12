@@ -122,11 +122,24 @@
 				<h:outputText value="#{prd.numberOfItems}" />
 			</h:column>
 			<h:column>
-			<f:facet name="header">Ich bringe</f:facet>
+				<f:facet name="header">Ich bringe</f:facet>
 				<h:form>
-					<h:commandButton value="Fertig" action="#{eventController.deleteById}">
+					<input type="number" name="quantity" min="1" max="10"></input>
+					<h:commandButton value="Fertig"
+						action="#{eventController.deleteById}">
+						<f:setPropertyActionListener target="#{eventViewController.bring}"
+							value="quantity" />
+					</h:commandButton>
+
+					<label class="idInput"><h:inputText id="idInput"
+							name="idInput" autocomplete="on"
+							value="#{eventViewController.amount}" required="true"
+							requiredMessage="0"></h:inputText> </label>
+
+					<h:commandButton action="#{eventViewController.bring()}"
+						value=" fertig " class="standardButton">
 						<f:setPropertyActionListener
-							target="#{eventController.currentEventId}" value="#{evt.idEvent}" />
+							target="#{eventViewController.productToDeleteId}" value="#{prd.productId}" />
 					</h:commandButton>
 				</h:form>
 			</h:column>
