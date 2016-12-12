@@ -14,7 +14,7 @@ h1 {
 
 #title {
 	font: 35px Arial, Helvetica, sans-serif;
-	margin: 20px 0 20px 20px;
+	margin-bottom:20px;
 }
 
 .order-table-odd-row{
@@ -46,7 +46,7 @@ h1 {
 
 #eventTitle{
 	font: 35px Arial, Helvetica, sans-serif;
-	margin: 20px 0 20px 20px;
+	margin: 0 0 20px 0;
 }
 
 #eventDate{
@@ -55,4 +55,8 @@ h1 {
 
 #eventDescription{
 	font-size:20px;
+}
+
+#eventForm{
+	width:60vmin;
 }
