@@ -3,6 +3,7 @@ package ch.bbc.partyplanner.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Named;
 import javax.persistence.Entity;
@@ -94,5 +95,4 @@ public class Event implements Serializable {
 	public String getEventDateAsString() {
 		return SDF.format(getEventDate());
 	}
-
 }

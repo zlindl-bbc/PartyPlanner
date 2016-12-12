@@ -91,12 +91,47 @@
 
 	<img src="resources/logo.png" id="logo" />
 	<div id="container">
-		<DIV class="content">
-			<h:form id="eventForm" >
-				<div><span id="eventTitle"><h:outputText value="#{eventViewController.getEventTitle()}"></h:outputText>   </span><span id="eventDate"><h:outputText value="#{eventViewController.getEventDate()}"></h:outputText></span></div>
-				<span id="eventDescription"><h:outputText value="#{eventViewController.getEventDescription()}"></h:outputText></span>
+		<div class="content">
+			<h:form id="eventForm">
+				<div>
+					<span id="eventTitle"><h:outputText
+							value="#{eventViewController.getEventTitle()}"></h:outputText> </span><span
+						id="eventDate"><h:outputText
+							value="#{eventViewController.getEventDate()}"></h:outputText></span>
+				</div>
+				<span id="eventDescription"><h:outputText
+						value="#{eventViewController.getEventDescription()}"></h:outputText></span>
 			</h:form>
-		</DIV>
+		</div>
+
+		<h:dataTable var="prd" value="#{eventViewController.products}"
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
+
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value=" #{prd.productName}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Beschreibung</f:facet>
+				<h:outputText value="#{prd.description}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Anzahl</f:facet>
+				<h:outputText value="#{prd.numberOfItems}" />
+			</h:column>
+			<h:column>
+			<f:facet name="header">Ich bringe</f:facet>
+				<h:form>
+					<h:commandButton value="Fertig" action="#{eventController.deleteById}">
+						<f:setPropertyActionListener
+							target="#{eventController.currentEventId}" value="#{evt.idEvent}" />
+					</h:commandButton>
+				</h:form>
+			</h:column>
+
+		</h:dataTable>
 	</div>
 </h:body>
 </h:html>

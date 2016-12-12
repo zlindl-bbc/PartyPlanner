@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -18,13 +20,14 @@ import javax.persistence.NamedQuery;
 @Entity
 @Model
 @NamedQueries({
-	@NamedQuery(name="Product.findAll", query="SELECT c FROM Product c"),
+	@NamedQuery(name="Product.findAll", query="SELECT c FROM Product c where c.eventId = :eventId"),
 })
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int idProduct;
+	
 	private String productName;
 	private String description;
 	private int numberOfItems;

@@ -61,7 +61,7 @@ public class EventController implements Serializable {
 			return "/index";
 		}
 	}
-
+                                                                                                                                                                                       
 	public String create() {
 		event.setEventAdress(generateEventAdress());
 		eventBean.create(event);
