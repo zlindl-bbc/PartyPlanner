@@ -7,8 +7,8 @@ function newProductRow() {
 		table.innerHTML = rows;
 		document.getElementById("table").appendChild(table.firstChild);
 	}
-	
-	var newRow = "<tr><th><input type='text' placeholder='Produktname'></th><th><input type='number' value='0'></th></tr>";
+
+	var newRow = "<tr><th><input type='text' placeholder='Produktname'></th><th><input type='number' min='0' step='1' value='0' required></th></tr>";
 	var table = document.createElement('table');
 	table.innerHTML = newRow;
 	document.getElementById("table").appendChild(table.firstChild);
