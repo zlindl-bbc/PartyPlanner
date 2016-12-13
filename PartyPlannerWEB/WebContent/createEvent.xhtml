@@ -1,0 +1,36 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<link rel="stylesheet" title="specificStyle" href="css/home.css"
+		type="text/css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/createEvent.js"></script>
+</h:head>
+
+<h:body>
+	<div id="top-bar-out">
+		<div class="active-links">
+			<div class="" id="session">
+				<a id="signin-link" href="#{userController.logout()}"> <strong>Log
+						out </strong>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<img src="resources/logo.png" id="logo" />
+
+	<div id="container">
+
+		<button onclick="newProductRow()">New Product</button>
+	
+		<br />
+	
+		<table id="table"></table>
+		
+	</div>
+	
+</h:body>
+</h:html>
