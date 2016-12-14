@@ -2,6 +2,7 @@ function newProductRow() {
 	var th = document.querySelectorAll('#table th');
 
 	if (!th.length) {
+		document.getElementById("saveButton").disabled = false;
 		var rows = "<th>Produktname</th><th>Anzahl</th>";
 		var table = document.createElement('table');
 		table.innerHTML = rows;
