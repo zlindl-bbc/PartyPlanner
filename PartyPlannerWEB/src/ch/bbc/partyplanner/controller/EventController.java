@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -37,10 +36,12 @@ public class EventController implements Serializable {
 	private List<Event> allEvents;
 	private String requestedEvent;
 	private boolean searchStatus = false;
+	CookieHelper cookieHelper = new CookieHelper();
 
 	@PostConstruct
 	public void init() {
-		List<Event> events = eventBean.getAllEventsByUserId(getUserController().getUser().getidUser());
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		List<Event> events = eventBean.getAllEventsByUserId(cookieHelper.getUserIdCookie(facesContext));
 		setAllEvents(events);
 	}
 
@@ -76,6 +77,10 @@ public class EventController implements Serializable {
 			sb.append(usableChars.charAt(random.nextInt(usableChars.length())));
 		}
 		return sb.toString();
+	}
+	
+	public void saveNewProducts() {
+		
 	}
 
 	public String deleteById() {

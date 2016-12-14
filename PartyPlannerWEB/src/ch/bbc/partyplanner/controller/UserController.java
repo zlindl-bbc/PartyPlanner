@@ -8,7 +8,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
 
 import ch.bbc.partyplanner.ejb.user.UserBeanLocal;
 import ch.bbc.partyplanner.model.User;
@@ -28,6 +31,7 @@ public class UserController implements Serializable {
 	private List<User> allUsers;
 	private boolean userLoggedIn = false;
 	private int status = 0;
+	CookieHelper cookieHelper = new CookieHelper();
 	
 	public String create() {
 		return userBean.create(user);
@@ -39,6 +43,8 @@ public class UserController implements Serializable {
 		if(loggedIn != null) {
 			setUserLoggedIn(true);
 			setUser(loggedIn);
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			cookieHelper.setLoggedInCookie(""+user.getidUser(), 6000, facesContext); // 6000 = 10 minutes
 			return "/home?faces-redirect=true";
 		} else {
 			setStatus(-1);
