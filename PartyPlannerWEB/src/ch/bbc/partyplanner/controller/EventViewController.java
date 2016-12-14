@@ -64,6 +64,12 @@ public class EventViewController implements Serializable {
 		eventViewBean.bring(productToDeleteId, amount);
 		return "/catchEvent?faces-redirect=true&eventAdress=" + currentEventAdress;
 	}
+	
+	public String getEventCreator() {
+		LOGGER.info("Called EventCreator  --------->ID:: " + event.getUserId());
+		return eventViewBean.getEventCreator(event.getUserId());
+		
+	}
 
 	public String getEventDescription() {
 		return event.getEventDescription();
