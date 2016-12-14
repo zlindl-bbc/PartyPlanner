@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -40,5 +41,16 @@ private final static Logger LOGGER = Logger.getLogger(EventBean.class.getName())
 	@Override
 	public Event getEventbyAdress(String eventAdress) {
 		return (Event) em.createNamedQuery("Event.findByAdress").setParameter("eventAdress", eventAdress).getSingleResult();
+	}
+
+	@Override
+	public void bring(int productToDeleteId, int amount) {
+		int amountBefore= (int) em.createNamedQuery("Product.findAmountById").setParameter("productId", productToDeleteId).getSingleResult();
+		int amountAfter=(amountBefore-amount);
+	
+		Query query = em.createNamedQuery("Product.setAmountById");
+		query.setParameter("amount", amountAfter);
+		query.setParameter("productId", productToDeleteId);
+		query.executeUpdate();
 	}
 }

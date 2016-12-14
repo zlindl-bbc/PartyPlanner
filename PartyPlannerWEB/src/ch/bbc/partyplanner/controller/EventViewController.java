@@ -1,14 +1,16 @@
 package ch.bbc.partyplanner.controller;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Logger;
+
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
+
 import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
 import ch.bbc.partyplanner.ejb.eventView.EventViewBeanLocal;
 import ch.bbc.partyplanner.ejb.product.ProductBeanLocal;
@@ -19,9 +21,9 @@ import ch.bbc.partyplanner.model.Product;
 @ViewScoped
 public class EventViewController implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private final static Logger LOGGER = Logger.getLogger(EventController.class.getName());
-	private int currentEventId;
-	private String currentEventAdress;
+	private static final Logger LOGGER = Logger.getLogger(EventController.class.getName());
+	private static final SimpleDateFormat SDF = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+
 	@EJB
 	private EventViewBeanLocal eventViewBean;
 
@@ -31,11 +33,11 @@ public class EventViewController implements Serializable {
 	@EJB
 	private ProductBeanLocal productBean;
 
-	@Inject
+	private int currentEventId;
+	private String currentEventAdress;
 	private Event event;
-
-	private String productToDeleteId;
-	private String Amount;
+	private int productToDeleteId;
+	private int amount;
 	private List<Product> products;
 	private String requestedEvent;
 	private boolean searchStatus = false;
@@ -54,20 +56,21 @@ public class EventViewController implements Serializable {
 
 		event = eventViewBean.getEventbyAdress(currentEventAdress);
 		LOGGER.info("Called Event: " + currentEventAdress);
-		
+
 		initProducts();
 	}
 
-	public void bring(){
-		
+	public String bring() {
+		eventViewBean.bring(productToDeleteId, amount);
+		return "/catchEvent?faces-redirect=true&eventAdress=" + currentEventAdress;
 	}
-	
+
 	public String getEventDescription() {
 		return event.getEventDescription();
 	}
 
 	public String getEventDate() {
-		return event.getEventDate().toLocaleString();
+		return SDF.format(event.getEventDate());
 	}
 
 	public List<Product> getProducts() {
@@ -81,5 +84,21 @@ public class EventViewController implements Serializable {
 	public void initProducts() {
 		List<Product> products = productBean.getAllProductsByEventID(event.getIdEvent()); // eventBean.getAllEventsByUserId(getUserController().getUser().getidUser());
 		setProducts(products);
+	}
+
+	public int getProductToDeleteId() {
+		return productToDeleteId;
+	}
+
+	public void setProductToDeleteId(int productToDeleteId) {
+		this.productToDeleteId = productToDeleteId;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 }

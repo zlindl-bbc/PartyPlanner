@@ -12,6 +12,8 @@ public interface EventViewBeanLocal {
 
 	Event getEventbyAdress(String eventAdress);
 
+	void bring(int productToDeleteId, int amount);
+
 	/**
 	 * 
 	 * @param event

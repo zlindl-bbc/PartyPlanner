@@ -1,8 +1,10 @@
 
-<h:html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html">
+
 <h:head>
 	<link rel="stylesheet" title="specificStyle" href="css/catchStyle.css"
 		type="text/css" />
@@ -13,8 +15,8 @@
 	<script type="text/javascript" src="js/dropdownForm.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-
 </h:head>
+
 <h:body
 	onload="isLoginFailed(#{userController.status}); isSearchFailed(#{eventController.searchStatus})">
 	<div id="top-stuff"
@@ -118,33 +120,23 @@
 				<h:outputText value="#{prd.description}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header">Anzahl</f:facet>
+				<f:facet name="header">benötigt</f:facet>
 				<h:outputText value="#{prd.numberOfItems}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Ich bringe</f:facet>
 				<h:form>
-					<input type="number" name="quantity" min="1" max="10"></input>
-					<h:commandButton value="Fertig"
-						action="#{eventController.deleteById}">
-						<f:setPropertyActionListener target="#{eventViewController.bring}"
-							value="quantity" />
-					</h:commandButton>
-
-					<label class="idInput"><h:inputText id="idInput"
-							name="idInput" autocomplete="on"
-							value="#{eventViewController.amount}" required="true"
-							requiredMessage="0"></h:inputText> </label>
-
-					<h:commandButton action="#{eventViewController.bring()}"
-						value=" fertig " class="standardButton">
+					<p:spinner min="1" max="10"
+						value="#{eventViewController.amount}" />
+					<h:commandButton class="standardButton" value="#{prd.productName}"
+						action="#{eventViewController.bring}">
 						<f:setPropertyActionListener
-							target="#{eventViewController.productToDeleteId}" value="#{prd.productId}" />
+							target="#{eventViewController.productToDeleteId}"
+							value="#{prd.idProduct}" />
 					</h:commandButton>
 				</h:form>
 			</h:column>
-
 		</h:dataTable>
 	</div>
 </h:body>
-</h:html>
+</html>
