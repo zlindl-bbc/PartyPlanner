@@ -68,6 +68,10 @@ public class EventController implements Serializable {
 		eventBean.create(event);
 		return "/index";
 	}
+	
+	public String takeMeHome(){
+		return "index.xhtml";
+	}
 
 	public String generateEventAdress() {
 		String usableChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
