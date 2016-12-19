@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
 import ch.bbc.partyplanner.model.Event;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class EventController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -62,7 +62,7 @@ public class EventController implements Serializable {
 			return "/index";
 		}
 	}
-                                                                                                                                                                                       
+
 	public String create() {
 		event.setEventAdress(generateEventAdress());
 		eventBean.create(event);
@@ -71,6 +71,10 @@ public class EventController implements Serializable {
 	
 	public String takeMeHome(){
 		return "index.xhtml";
+	}
+	
+	public String goToCreateEvent(){
+		return "createEvent.xhtml";
 	}
 
 	public String generateEventAdress() {
@@ -82,9 +86,25 @@ public class EventController implements Serializable {
 		}
 		return sb.toString();
 	}
-	
-	public void saveNewProducts() {
+
+	public String createEvent() {
+		// try {
+		LOGGER.info("EventName: " + event.getEventName() + ", EventDate: " + event.getEventDate());
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		event.setUserId(cookieHelper.getUserIdCookie(facesContext));
+		event.setEventAdress(this.generateEventAdress());
+		eventBean.createEvent(event);
 		
+		// } catch (Exception e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		return "";
+	}
+
+	public String testMsg() {
+		System.out.println("Test");
+		return "";
 	}
 
 	public String deleteById() {

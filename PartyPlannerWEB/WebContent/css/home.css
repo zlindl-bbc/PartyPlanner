@@ -17,6 +17,10 @@ h1 {
 	margin: 20px 0 20px 20px;
 }
 
+.order-table input{
+	background-color:#ff8040;
+}
+
 .order-table-odd-row{
 	border: 1px solid #16066f;
 	background-color:#c2c2ff;

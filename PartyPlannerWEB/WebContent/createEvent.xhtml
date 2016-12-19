@@ -25,15 +25,28 @@
 	<div id="container">
 
 		<button onclick="newProductRow()">New Product</button>
-	
 		<br />
-	
-		<form>
-		<table id="table"></table>
-		<h:commandButton id="saveButton" value="Produkte speichern" action="#{eventController.saveNewProducts}" disabled="true"/>
-		</form>
-		
+
+		<h:form>
+			<h:outputLabel value="Eventname: " />
+			<h:inputText id="eventname"
+				value="#{eventController.event.eventName}" required="true"
+				requiredMessage="Bitte den Eventname eingeben" />
+			<h:outputLabel value="Datum: " />
+			<h:inputText id="datum" value="#{eventController.event.eventDate}"
+				required="true" requiredMessage="Bitte das datum eingeben">
+				<f:convertDateTime pattern="dd.MM.yyyy" />
+			</h:inputText>
+			<h:outputLabel value="Beschreibung: " />
+			<h:inputText id="beschreibung"
+				value="#{eventController.event.eventDescription}" required="true"
+				requiredMessage="Bitte die Beschreibung eingeben" />
+			<table id="table"></table>
+			<h:commandButton id="saveButton" value="Event speichern"
+				action="#{eventController.createEvent()}" />
+		</h:form>
+
 	</div>
-	
+
 </h:body>
 </h:html>

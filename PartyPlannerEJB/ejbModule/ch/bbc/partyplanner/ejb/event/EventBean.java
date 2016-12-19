@@ -37,6 +37,10 @@ public class EventBean implements EventBeanLocal {
 	public void deleteById(int eventId) {
 		em.createNamedQuery("Event.deleteById").setParameter("eventId", eventId).executeUpdate();
 	}
+	
+	public void createEvent(Event event){
+		em.persist(event);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
