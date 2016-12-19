@@ -23,6 +23,13 @@ a {
 	font-color:black;
 }
 
+.deleteButton{
+	border-radius:5px;
+	background-color:#ff8000;
+	margin-left:3px;
+	font-color:black;
+}
+
 h1 {
 	font-family: "NettoOT";
 	font-size: 1.5rem;
