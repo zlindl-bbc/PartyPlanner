@@ -39,6 +39,7 @@ public class EventBean implements EventBeanLocal {
 	}
 	
 	public void createEvent(Event event){
+		em.persist(event);
 	}
 
 	@SuppressWarnings("unchecked")
