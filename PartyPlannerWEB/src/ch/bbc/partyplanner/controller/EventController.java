@@ -72,6 +72,10 @@ public class EventController implements Serializable {
 	public String takeMeHome(){
 		return "index.xhtml";
 	}
+	
+	public String goToCreateEvent(){
+		return "createEvent.xhtml";
+	}
 
 	public String generateEventAdress() {
 		String usableChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
@@ -86,6 +90,8 @@ public class EventController implements Serializable {
 	public String createEvent() {
 		// try {
 		LOGGER.info("EventName: " + event.getEventName() + ", EventDate: " + event.getEventDate());
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		event.setUserId(cookieHelper.getUserIdCookie(facesContext));
 		event.setEventAdress(this.generateEventAdress());
 		eventBean.createEvent(event);
 		
