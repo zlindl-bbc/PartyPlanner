@@ -61,7 +61,7 @@
 
 			<h:column>
 				<h:form>
-					<h:commandButton value="Del" action="#{eventController.deleteById}">
+					<h:commandButton class="deleteButton" value="Del" action="#{eventController.deleteById}">
 						<f:setPropertyActionListener
 							target="#{eventController.currentEventId}" value="#{evt.idEvent}" />
 					</h:commandButton>
