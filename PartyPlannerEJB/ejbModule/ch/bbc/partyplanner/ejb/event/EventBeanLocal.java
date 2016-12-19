@@ -19,6 +19,8 @@ public interface EventBeanLocal {
 
 	public abstract void deleteById (int eventId);
 	
+	public abstract void createEvent (Event event);
+	
 	public abstract List<Event> getAllEventsByUserId(int userId);
 	
 	public abstract boolean eventExists(String eventAdress);

@@ -1,6 +1,7 @@
 package ch.bbc.partyplanner.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,20 +14,17 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 /**
  * The persistent class for the event database table.
  * 
  */
 @Named
 @Entity
-@NamedQueries({ 
-	@NamedQuery(name="Event.findAll", query ="SELECT e FROM Event e"), 
-	@NamedQuery(name="Event.findByAdress", query="SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
-	@NamedQuery(name="Event.deleteById", query="DELETE FROM Event e WHERE e.idEvent = :eventId"),
-	@NamedQuery(name="Event.createEvent", query="UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.userId = :eventUserId"),			
-    @NamedQuery(name="Event.findAllByUserId", query="SELECT e FROM Event e WHERE e.userId = :userId"),
-})
+@NamedQueries({ @NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e"),
+		@NamedQuery(name = "Event.findByAdress", query = "SELECT e FROM Event e WHERE e.eventAdress = :eventAdress"),
+		@NamedQuery(name = "Event.deleteById", query = "DELETE FROM Event e WHERE e.idEvent = :eventId"),
+		@NamedQuery(name = "Event.createEvent", query = "UPDATE Event e SET e.eventAdress = :eventAdress, e.eventDate = :eventDate, e.eventName = :eventName, e.eventDescription = :eventDescription, e.userId = :eventUserId"),
+		@NamedQuery(name = "Event.findAllByUserId", query = "SELECT e FROM Event e WHERE e.userId = :userId"), })
 public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final SimpleDateFormat SDF = new SimpleDateFormat("dd.MM.yyyy");
@@ -91,7 +89,7 @@ public class Event implements Serializable {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
+
 	public String getEventDateAsString() {
 		return SDF.format(getEventDate());
 	}
