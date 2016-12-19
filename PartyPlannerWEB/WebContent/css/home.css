@@ -18,7 +18,10 @@ h1 {
 }
 
 .order-table input{
-	background-color:#ff8040;
+	border-radius:5px;
+	background-color:white;
+	margin-left:3px;
+	font-color:black;
 }
 
 .order-table-odd-row{
