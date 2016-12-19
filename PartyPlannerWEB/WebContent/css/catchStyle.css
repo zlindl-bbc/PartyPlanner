@@ -43,6 +43,9 @@ h1 {
 .content{
 	margin:10vmin;
 }
+.containsSpinner{
+	width:10px;
+}
 
 #eventTitle{
 	font: 35px Arial, Helvetica, sans-serif;
@@ -55,6 +58,7 @@ h1 {
 
 #eventDescription{
 	font-size:20px;
+	margin-right:10px;
 }
 
 #eventForm{

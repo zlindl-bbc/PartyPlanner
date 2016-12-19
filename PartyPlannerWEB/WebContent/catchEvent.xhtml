@@ -10,82 +10,13 @@
 		type="text/css" />
 	<link rel="stylesheet" title="specificStyle"
 		href="css/bootstrap.min.css" type="text/css" />
-
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/dropdownForm.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </h:head>
 
-<h:body
-	onload="isLoginFailed(#{userController.status}); isSearchFailed(#{eventController.searchStatus})">
-	<div id="top-stuff"
-		onload="#{userController.setStatus(0)}; #[eventController.searchStatus = false]">
-		<div id="top-bar-out">
-			<div id="topnav">
-				<div class="active-links">
-					<div class="" id="session">
-						<a id="signin-link" href="#"> <em>Have an account?</em> <strong>Sign
-								in</strong>
-						</a>
-					</div>
-					<div style="display: none;" id="signin-dropdown">
-						<h:form class="signin">
-							<fieldset class="textbox">
-								<label class="username"><span>email</span> <h:inputText
-										id="email" name="email" autocomplete="on"
-										value="#{userController.user.email}" required="true"
-										requiredMessage="please enter email"></h:inputText> </label> <label
-									class="username"><span>password</span> <h:inputSecret
-										id="password" name="password" autocomplete="on"
-										value="#{userController.user.password}" required="true"
-										requiredMessage="please enter password"></h:inputSecret> </label>
-							</fieldset>
-
-							<fieldset class="remb">
-								<label class="remember"> <input value="1"
-									name="remember_me" type="checkbox" /><span>Remember me</span>
-								</label>
-								<h:commandButton action="#{userController.login()}"
-									value="Login" class="standardButton" />
-							</fieldset>
-							<p>
-								<a class="newRegister" href="#">Have no account?</a>
-							</p>
-						</h:form>
-					</div>
-
-					<div style="display: none;" id="register-dropdown">
-						<h:form class="register">
-							<fieldset class="textbox">
-								<label class="username"><span>username</span> <h:inputText
-										id="username" name="username" autocomplete="on"
-										value="#{userController.user.username}" required="true"
-										requiredMessage="please enter username"></h:inputText> </label> <label
-									class="username"><span>email</span> <h:inputText
-										id="email" name="email" autocomplete="on"
-										value="#{userController.user.email}" required="true"
-										requiredMessage="please enter email"></h:inputText> </label> <label
-									class="username"><span>password</span> <h:inputSecret
-										id="password" name="password" autocomplete="on"
-										value="#{userController.user.password}" required="true"
-										requiredMessage="please enter password"></h:inputSecret> </label>
-							</fieldset>
-
-							<fieldset class="remb">
-								<label class="remember"> <input value="1"
-									name="remember_me" type="checkbox" /><span>Remember me</span>
-								</label>
-
-								<h:commandButton action="#{userController.create()}"
-									value="Register" class="standardButton" />
-							</fieldset>
-							<p>
-								<a class="newLogin" href="#">Have an account?</a>
-							</p>
-						</h:form>
-					</div>
-				</div>
+<h:body>
+	<div id="top-bar-out">
+		<div class="active-links">
+			<div class="" id="session">
+				<a id="signin-link" href="#{eventController.takeMeHome()}"> <strong>Home </strong></a>
 			</div>
 		</div>
 	</div>
@@ -97,7 +28,8 @@
 			<h:form id="eventForm">
 				<div>
 					<span id="eventTitle"><h:outputText
-							value="#{eventViewController.getEventTitle()}"></h:outputText> </span><span
+							value="#{eventViewController.getEventTitle()}"></h:outputText> </span><span id="eventDescription">by <h:outputText
+						value="#{eventViewController.getEventCreator()}"></h:outputText></span><span
 						id="eventDate"><h:outputText
 							value="#{eventViewController.getEventDate()}"></h:outputText></span>
 				</div>
@@ -126,9 +58,9 @@
 			<h:column>
 				<f:facet name="header">Ich bringe</f:facet>
 				<h:form>
-					<p:spinner min="1" max="10"
-						value="#{eventViewController.amount}" />
-					<h:commandButton class="standardButton" value="#{prd.productName}"
+					<div><p:spinner min="0" max="#{prd.numberOfItems}"
+						value="#{eventViewController.amount}" /></div>
+					<h:commandButton class="standardButton" value="mitbringen"
 						action="#{eventViewController.bring}">
 						<f:setPropertyActionListener
 							target="#{eventViewController.productToDeleteId}"
