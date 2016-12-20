@@ -47,6 +47,6 @@ public class UserBean implements UserBeanLocal {
 
 	public String create(User user) {
 		em.persist(user);
-		return "/home";
+		return "";
 	}
 }

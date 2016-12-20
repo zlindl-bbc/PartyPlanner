@@ -34,7 +34,17 @@ public class UserController implements Serializable {
 	CookieHelper cookieHelper = new CookieHelper();
 	
 	public String create() {
-		return userBean.create(user);
+		userBean.create(user);
+		User loggedIn = userBean.login(user);
+		
+		if(loggedIn != null){
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			cookieHelper.setLoggedInCookie(""+loggedIn.getidUser(), 6000, facesContext);
+			return "home?faces-redirect=true";
+		}
+		else{
+			return "";
+		}
 	}
 	
 	public String login() {
