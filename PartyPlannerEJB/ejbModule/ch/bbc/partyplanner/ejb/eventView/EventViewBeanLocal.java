@@ -17,6 +17,8 @@ public interface EventViewBeanLocal {
 
 	String getEventCreator(int currentEventId);
 
+	String getProductNameById(int id);
+
 	/**
 	 * 
 	 * @param event
