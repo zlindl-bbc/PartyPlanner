@@ -15,9 +15,8 @@
 			<div class="" id="session">
 				<a id="signin-link" href="#{userController.logout()}"> <strong>Log
 						out </strong>
-				</a>
-				<a id="signin-link" href="#{eventController.goToCreateEvent()}"> 
-				<strong style="margin-left:10px;"> Create Event</strong>
+				</a> <a id="signin-link" href="#{eventController.goToCreateEvent()}">
+					<strong style="margin-left: 10px;"> Create Event</strong>
 				</a>
 			</div>
 		</div>
@@ -61,7 +60,8 @@
 
 			<h:column>
 				<h:form>
-					<h:commandButton class="deleteButton" value="Del" action="#{eventController.deleteById}">
+					<h:commandButton class="deleteButton" value="Del"
+						action="#{eventController.deleteById}">
 						<f:setPropertyActionListener
 							target="#{eventController.currentEventId}" value="#{evt.idEvent}" />
 					</h:commandButton>
