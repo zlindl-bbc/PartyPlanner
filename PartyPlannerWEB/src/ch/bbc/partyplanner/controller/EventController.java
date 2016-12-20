@@ -11,7 +11,15 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+
+import com.sun.xml.fastinfoset.sax.Properties;
 
 import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
 import ch.bbc.partyplanner.model.Event;
@@ -94,7 +102,7 @@ public class EventController implements Serializable {
 		event.setUserId(cookieHelper.getUserIdCookie(facesContext));
 		event.setEventAdress(this.generateEventAdress());
 		eventBean.createEvent(event);
-		
+		sendMail("simon.k@bluewin.ch", "thisisanEventAdress");
 		// } catch (Exception e) {
 		// // TODO Auto-generated catch block
 		// e.printStackTrace();
@@ -159,4 +167,29 @@ public class EventController implements Serializable {
 	public void setCurrentEventId(int currentEventId) {
 		this.currentEventId = currentEventId;
 	}
+	
+	 public static void sendMail(String receiver, String adress) {
+	      
+//	      String to = "abcd@gmail.com";
+		  String to = receiver;
+	      String from = "party@planner.com";
+	      String host = "localhost";
+	      
+	      java.util.Properties properties = System.getProperties();
+	      properties.setProperty("mail.smtp.host", host);
+	      Session session = Session.getDefaultInstance(properties);
+
+	      try {
+	         MimeMessage message = new MimeMessage(session);
+	         message.setFrom(new InternetAddress(from));
+	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+	         message.setSubject("Event Created");
+	         message.setContent("<h1>You have succesfully created an Event</h1>", "text/html");
+	         
+	         Transport.send(message);
+	         LOGGER.info("Sent message successfully....");
+	      }catch (MessagingException mex) {
+	         mex.printStackTrace();
+	      }
+	   }
 }
