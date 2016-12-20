@@ -54,7 +54,7 @@ public class UserController implements Serializable {
 			setUserLoggedIn(true);
 			setUser(loggedIn);
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			cookieHelper.setLoggedInCookie(""+user.getidUser(), 6000, facesContext); // 6000 = 10 minutes
+		cookieHelper.setLoggedInCookie(""+user.getidUser(), 6000, facesContext); // 6000 = 10 minutes
 			return "/home?faces-redirect=true";
 		} else {
 			setStatus(-1);
@@ -64,10 +64,8 @@ public class UserController implements Serializable {
 	}
 	
 	public String logout() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-	            .getExternalContext().getSession(false);
-	    session.invalidate();
-	    setUserLoggedIn(false);
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		cookieHelper.logoutUser(facesContext);
 	    return "index.xhtml";
 	}
 	
