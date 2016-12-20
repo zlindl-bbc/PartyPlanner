@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 @Model
 @NamedQueries({ @NamedQuery(name = "Product.findAll", query = "SELECT c FROM Product c where c.eventId = :eventId"),
 		@NamedQuery(name = "Product.findAmountById", query = "SELECT c.numberOfItems FROM Product c where c.idProduct = :productId"),
-		@NamedQuery(name = "Product.findnameById", query = "SELECT c.productName FROM Product c where c.idProduct = :id"),
 		@NamedQuery(name = "Product.setAmountById", query = "Update Product c set c.numberOfItems = :amount where c.idProduct = :productId"), })
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;

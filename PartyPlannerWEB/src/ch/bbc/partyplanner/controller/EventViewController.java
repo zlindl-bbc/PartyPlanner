@@ -2,7 +2,6 @@ package ch.bbc.partyplanner.controller;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import ch.bbc.partyplanner.ejb.event.EventBeanLocal;
 import ch.bbc.partyplanner.ejb.eventView.EventViewBeanLocal;
-import ch.bbc.partyplanner.ejb.product.ProductBean;
 import ch.bbc.partyplanner.ejb.product.ProductBeanLocal;
 import ch.bbc.partyplanner.model.Event;
 import ch.bbc.partyplanner.model.Product;
@@ -43,7 +41,6 @@ public class EventViewController implements Serializable {
 	private List<Product> products;
 	private String requestedEvent;
 	private boolean searchStatus = false;
-	private ArrayList<String> brought=new ArrayList<String>();
 
 	public String getEventTitle() {
 		init();
@@ -65,8 +62,6 @@ public class EventViewController implements Serializable {
 
 	public String bring() {
 		eventViewBean.bring(productToDeleteId, amount);
-		brought.add(eventViewBean.getProductNameById(productToDeleteId));
-		brought.add(" "+amount);
 		return "/catchEvent?faces-redirect=true&eventAdress=" + currentEventAdress;
 	}
 	
@@ -76,16 +71,6 @@ public class EventViewController implements Serializable {
 		
 	}
 
-	public String getBroughtList(){
-		String returnString="<table>";
-		
-		for (int i = 0; i < brought.size(); i=(i+2)) {
-			returnString=returnString+"<tr><th>"+brought.get(i)+"</th><th>"+brought.get((i+1))+"</th></tr>";
-		}
-		
-		LOGGER.info("broughtlist: "+brought.toString());
-		return (returnString+"</table>");
-	}
 	public String getEventDescription() {
 		return event.getEventDescription();
 	}
