@@ -12,12 +12,12 @@
 		href="css/bootstrap.min.css" type="text/css" />
 </h:head>
 
-<h:body onload="EventViewController.access">
+<h:body>
 	<div id="top-bar-out">
 		<div class="active-links">
 			<div class="" id="session">
-				<a id="signin-link" href="#{eventController.takeMeHome()}"> <strong>Home
-				</strong></a>
+				<h:commandButton action="#{eventController.takeMeHome()}" value=" Home " class="standardButton" />
+				<a id="signin-link" href="#{eventController.takeMeHome()}"> <strong>Home </strong></a>
 			</div>
 		</div>
 	</div>
@@ -29,9 +29,8 @@
 			<h:form id="eventForm">
 				<div>
 					<span id="eventTitle"><h:outputText
-							value="#{eventViewController.getEventTitle()}"></h:outputText> </span><span
-						id="eventDescription">by <h:outputText
-							value="#{eventViewController.getEventCreator()}"></h:outputText></span><span
+							value="#{eventViewController.getEventTitle()}"></h:outputText> </span><span id="eventDescription">by <h:outputText
+						value="#{eventViewController.getEventCreator()}"></h:outputText></span><span
 						id="eventDate"><h:outputText
 							value="#{eventViewController.getEventDate()}"></h:outputText></span>
 				</div>
@@ -60,10 +59,8 @@
 			<h:column>
 				<f:facet name="header">Ich bringe</f:facet>
 				<h:form>
-					<div>
-						<p:spinner min="0" max="#{prd.numberOfItems}"
-							value="#{eventViewController.amount}" />
-					</div>
+					<div><p:spinner min="0" max="#{prd.numberOfItems}"
+						value="#{eventViewController.amount}" /></div>
 					<h:commandButton class="standardButton" value="mitbringen"
 						action="#{eventViewController.bring}">
 						<f:setPropertyActionListener
@@ -73,10 +70,6 @@
 				</h:form>
 			</h:column>
 		</h:dataTable>
-	</div>
-	<div id="broughtDIV">
-		<h:outputText id="brought" itemEscaped="false" escape="false"
-			value="#{eventViewController.getBroughtList()}"></h:outputText>
 	</div>
 </h:body>
 </html>

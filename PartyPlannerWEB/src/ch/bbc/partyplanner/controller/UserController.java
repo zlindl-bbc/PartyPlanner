@@ -54,8 +54,10 @@ public class UserController implements Serializable {
 	}
 	
 	public String logout() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		cookieHelper.logoutUser(facesContext);
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+	            .getExternalContext().getSession(false);
+	    session.invalidate();
+	    setUserLoggedIn(false);
 	    return "index.xhtml";
 	}
 	

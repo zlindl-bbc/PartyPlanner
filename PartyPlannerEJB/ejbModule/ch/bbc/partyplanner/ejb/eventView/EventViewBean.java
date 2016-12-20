@@ -66,10 +66,4 @@ public class EventViewBean implements EventViewBeanLocal {
 	public String getEventCreator(int idUser) {
 		return (String) em.createNamedQuery("User.getUsernameById").setParameter("idUser", idUser).getSingleResult();
 	}
-
-	@Override
-	public String getProductNameById(int id) {
-		return (String) em.createNamedQuery("Product.findnameById").setParameter("id", id)
-				.getSingleResult();
-	}
 }
