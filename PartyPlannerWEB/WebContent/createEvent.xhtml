@@ -16,6 +16,9 @@
 				<a id="signin-link" href="#{userController.logout()}"> <strong>Log
 						out </strong>
 				</a>
+				<a id="signin-link" href="#{eventController.takeMeHome()}">
+					<strong style="margin-left: 10px;"> Go Home</strong>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -23,9 +26,6 @@
 	<img src="resources/logo.png" id="logo" />
 
 	<div id="container">
-
-		<button onclick="newProductRow()">New Product</button>
-		<br />
 
 		<h:form>
 			<h:outputLabel value="Eventname: " />
@@ -41,10 +41,18 @@
 			<h:inputText id="beschreibung"
 				value="#{eventController.event.eventDescription}" required="true"
 				requiredMessage="Bitte die Beschreibung eingeben" />
-			<table id="table"></table>
 			<h:commandButton id="saveButton" value="Event speichern"
 				action="#{eventController.createEvent()}" />
 		</h:form>
+
+		<button onclick="newProductRow()">Neues Produkt</button>
+		<br />
+
+		<form>
+			<table id="table"></table>
+			<h:commandButton id="saveButton" value="Produkt speichern"
+				action="#{eventController.createEvent()}" />
+		</form>
 
 	</div>
 

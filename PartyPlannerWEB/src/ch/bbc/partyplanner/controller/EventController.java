@@ -78,11 +78,15 @@ public class EventController implements Serializable {
 	}
 	
 	public String takeMeHome(){
-		return "index.xhtml";
+		return "home.xhtml";
 	}
 	
 	public String goToCreateEvent(){
 		return "createEvent.xhtml";
+	}
+	
+	public String goToIndex(){
+		return "index.xhtml";
 	}
 
 	public String generateEventAdress() {
