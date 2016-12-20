@@ -102,7 +102,7 @@ public class EventController implements Serializable {
 		event.setUserId(cookieHelper.getUserIdCookie(facesContext));
 		event.setEventAdress(this.generateEventAdress());
 		eventBean.createEvent(event);
-		sendMail("simon.k@bluewin.ch", "thisisanEventAdress");
+		//sendMail("simon.k@bluewin.ch", "thisisanEventAdress");
 		// } catch (Exception e) {
 		// // TODO Auto-generated catch block
 		// e.printStackTrace();
